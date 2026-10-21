@@ -1,0 +1,6 @@
+{
+  "judge_prompt_sha256": "dc593a10aa2d7cdcd228d6575478cdd9f8e45cf35d784d61c1e0d507b228fc25",
+  "scorer_sha256": "e67e676a4532faa75cd515d709a9cf420899cca965e303937ed1bc81c9cb1d34",
+  "variants_blinded": true,
+  "started_after_benchmark_completion": true
+}

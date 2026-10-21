@@ -1,0 +1,67 @@
+{
+  "scope": "Original before-live vs current: intersection of case_id, repeat, turn. No new model calls.",
+  "records": 33,
+  "question_and_manifest_match": true,
+  "before": {
+    "n": 33,
+    "tokens": 29547,
+    "chat_tokens": 29547,
+    "embedding_tokens": 0,
+    "median": 5.139,
+    "p95": 6.163,
+    "incident_median": 5.441,
+    "rewrites": 0,
+    "retries": 0,
+    "chat_calls": 99,
+    "legacy_usd": 0.07295199999999999,
+    "estimated_usd": null,
+    "retrieval": {
+      "tp": 21,
+      "predicted": 21,
+      "expected": 27,
+      "precision": 1.0,
+      "recall": 0.7777777777777778,
+      "f1": 0.875,
+      "exact": 15,
+      "cases": 21
+    },
+    "target_pass": 30
+  },
+  "current": {
+    "n": 33,
+    "tokens": 77093,
+    "chat_tokens": 75833,
+    "embedding_tokens": 1260,
+    "median": 5.2379,
+    "p95": 8.4307,
+    "incident_median": 5.7226,
+    "rewrites": 0,
+    "retries": 0,
+    "chat_calls": 78,
+    "legacy_usd": 0.308321,
+    "estimated_usd": 0.20195470000000001,
+    "retrieval": {
+      "tp": 27,
+      "predicted": 33,
+      "expected": 27,
+      "precision": 0.8181818181818182,
+      "recall": 1.0,
+      "f1": 0.9,
+      "exact": 15,
+      "cases": 21
+    },
+    "target_pass": 33
+  },
+  "source_sha256": {
+    "eval/results/before-live/responses.jsonl": "fc0a09e1f2a21316e9534283f1fd9483a8662754e7b7126db1bc20731fbdea0a",
+    "eval/results/current/responses.jsonl": "46f4788bbf259d1298eebb6781040dc7e4b784ec1d47c93c8f9a9ffd48e58438",
+    "eval/results/before-live/scores.jsonl": "41b538dc7d5b035d2665d895bf988426d3aafbd99cc7aa1ebf484523efbb634d",
+    "eval/results/current/scores.jsonl": "afa1bdc234c232d2cf3d0086fc97715f4cf1bed840f95ee2801d848e9631b36c"
+  },
+  "notes": [
+    "Historical runs on different dates; latency is descriptive, not a controlled repeat experiment.",
+    "Legacy usd is synthetic and not billing; original split input/output usage is unavailable.",
+    "Retrieval metrics recomputed identically from resource IDs and fixture expected topics, q01-q07 (21 requests).",
+    "LLM judge prompts differ; their historical scores are reference only."
+  ]
+}

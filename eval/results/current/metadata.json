@@ -1,0 +1,115 @@
+{
+  "started_at": "2026-10-21T02:03:55.984929+00:00",
+  "models": [
+    "gpt-4o-mini",
+    "gpt-4o"
+  ],
+  "temperature": 0,
+  "repeats": 3,
+  "case_ids": [
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q06",
+    "q07",
+    "q08",
+    "q09",
+    "q10",
+    "q01_sustained",
+    "q01_duplicate_batch",
+    "q02_memory_89_9",
+    "q02_memory_90_0",
+    "q02_memory_90_1"
+  ],
+  "order": "rotated per case and repetition",
+  "transport": "fixed in-process MCP; no injected failure or jitter",
+  "pricing": {
+    "date": "2026-10-20",
+    "source": "https://developers.openai.com/api/docs/models/",
+    "usd_per_million": {
+      "gpt-4o": [
+        2.5,
+        1.25,
+        10.0
+      ],
+      "gpt-4o-mini": [
+        0.15,
+        0.075,
+        0.6
+      ],
+      "text-embedding-3-small": [
+        0.02,
+        0.02,
+        0.0
+      ]
+    },
+    "note": "estimate, not invoice; cached input discounted when API reports it"
+  },
+  "retrieval": {
+    "threshold": 0.25,
+    "margin": 0.12,
+    "top_k": 1,
+    "model": "text-embedding-3-small",
+    "selection_split": "development",
+    "development_metrics": {
+      "precision": 0.8571428571428571,
+      "recall": 0.75,
+      "f1": 0.7999999999999999,
+      "exact_match": 0.6666666666666666,
+      "true_positive": 6,
+      "predicted": 7,
+      "expected": 8,
+      "cases": 9
+    }
+  },
+  "index_usage": [],
+  "dataset_manifest": {
+    "dataset_id": "incident-quality-v1",
+    "sha256": {
+      "cases.json": "07e2c49630c23bb08a2b5d9962a5de05b6cd07dbe445a2c9eec0f9001e128c25",
+      "runbooks/cpu-spike.md": "30796f7b5c1d0bc09acfb2518b240e3a07b04136e84fe41397802a3bf2bff22d",
+      "runbooks/db-down.md": "a2d4f4d3bc89984348976e9012518ceba32f389a35bf5ee7da4c19f7e1de9be5",
+      "runbooks/disk-full.md": "72b9d4f006490887ccba981531129e5a42c0d7b8c789208db391fdc5acc566c7",
+      "runbooks/high-latency.md": "0df4846e66993b0b9312327a3f51fe6de663d701c64c2c7c10a9e2c35e9e63a3",
+      "runbooks/memory-leak.md": "085f00e9bba5effbb54e97a82d5f0b7032e027dac29816021729932a5e9a9ee1",
+      "runbooks/network-timeout.md": "ed68d1bc775138e7e66cfb50698949856bf27d5e11afefff6e5826223e063596"
+    }
+  },
+  "source_hashes": {
+    "agent/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "agent/chains.py": "09ddc0b0a3f3d124a19270c95b3658d780c54fadb99acf5a30285705ef9a38ad",
+    "agent/deps.py": "9f68f3469a434dad9bf8ba6acb2992292aab2b4f6fddbaac647c011528fefbac",
+    "agent/fake_llm.py": "8af6ae5c4c804053c6365ff1e54a7e549077a393e4803325cb3021fc2fe977c7",
+    "agent/graph.py": "7ec738bb85b03df72b5acd4418f40324067ac66003d2299ce6b44ccc0f1ae38a",
+    "agent/mcp_client.py": "6d219523a3dc306af94cfba790f24f074429d71579b57628a3e02e1ef4ad2dd9",
+    "agent/nodes/__init__.py": "c7ab7732c1df9eed144152c4e3c8d06d49831c7c7639da17289d158b4faca834",
+    "agent/nodes/answer.py": "e443260ba879482c604e9089e86d0a02e7b75ccc768c57d7b96bac1f281504f1",
+    "agent/nodes/intake.py": "b9dd836fdec9ed7541a6222fe5aac278ca3463075960ceb69374b2885183ffe9",
+    "agent/nodes/research.py": "7638636fc178a802028f2dcfdaebc835b6e92f7e1a2578bfa3a18aafbf0883e7",
+    "agent/ollama_llm.py": "f6e69878c30a08d837ced8c684f00bf1864510fcc86f4f207518ccfa3076d98b",
+    "agent/openai_llm.py": "594e0bb99876afddbcf403c65eb34be64c62744dc25d92954b300ef40ceba234",
+    "agent/policies.py": "a5c5e59743a92c5816b0e4dc84f666c02f72f093b107511fdb42f8afea0062e2",
+    "agent/prompts.py": "cd6eb1b97c66c9c82439b502b32e9c0add34bc058684bb3683a828565488ad9d",
+    "agent/reporting.py": "d7df5f3e6883d1603ce16d9eb6f04e2e042f1b33494899d5997f67de18922ee1",
+    "agent/researchers.py": "9a4623f7c08373f6cd5fba636667b6168e924d3a4174a9dc8a9981bd0ca45676",
+    "agent/retrieval.py": "1c84caefb955310298942036e75da61d07018afbad2256a20c36978722fd3259",
+    "agent/retry.py": "ca3d72738b427086314adf9559cdc23cca7afb49e79a569d934a98bca7e0fc64",
+    "agent/selection.py": "7a2cc1ec357339c25045db579a9aa39c846e4cfe582ce509ff856c9d77df501e",
+    "agent/session_store.py": "cd1f61396ccd815d940be5a3d8929199648273c360c82fbd722163644b7356a6",
+    "agent/state.py": "5870a0db8e4fbdcf5147f9b327b9f2a6c4c96fa0b848d13d9d648093d49d6913",
+    "agent/supervisor_v1.py": "6080b4b8c3a6bd56c617a560a64d644d5f1e5e2721ad65324a09886a2df6cab8",
+    "agent/telemetry.py": "00361f82522c0c2505ec4fe5a87a4a91eeab60eb92c1100f0313f25307679614"
+  },
+  "original_variants": [
+    "before",
+    "rag_control",
+    "after"
+  ],
+  "variant": "after",
+  "preserved_from": "eval/results/selective-comparison/after",
+  "comparison_note": "Only current selective-multi records retained here; the source benchmark before was an intermediate always-multi version, NOT the original baseline.",
+  "original_benchmark_baseline": "eval/baseline_pre_selective; exact before code, shared telemetry only",
+  "original_benchmark_comparison": "before=frozen multi; rag_control=frozen rag; after=selective compact parallel multi"
+}

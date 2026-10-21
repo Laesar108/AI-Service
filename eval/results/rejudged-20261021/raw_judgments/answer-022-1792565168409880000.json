@@ -1,0 +1,21 @@
+{
+  "judge": {
+    "grounding_pass": false,
+    "conditions_pass": false,
+    "request_pass": true,
+    "actionability_pass": false,
+    "irrelevant_advice": false,
+    "issues": [
+      "2) 메모리 사용률이 90%에 근접하고 있어 OOM(Out Of Memory) 상황을 방지하기 위해 해당 프로세스를 즉시 재시작하는 것이 필요합니다. 이는 임시 조치임을 기록해두어야 합니다. - 88.7%는 90% 이상 조건을 충족하지 않으므로 즉시 재시작을 요구할 수 없습니다.",
+      "2) 메모리 사용률이 90%에 근접하고 있어 OOM(Out Of Memory) 상황을 방지하기 위해 해당 프로세스를 즉시 재시작하는 것이 필요합니다. 이는 임시 조치임을 기록해두어야 합니다. - 메모리 누수나 OOM 임박을 확정하지 말아야 합니다."
+    ]
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 1939,
+    "input_tokens": 1741,
+    "output_tokens": 198,
+    "cached_input_tokens": 1536,
+    "usd": 0.009695
+  }
+}

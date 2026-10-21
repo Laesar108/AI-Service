@@ -1,0 +1,1742 @@
+[
+  {
+    "case_id": "q01",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q03",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q04",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "gateway-service의 degraded 상태가 payments-service로의 요청 타임아웃에 기여할 수 있음."
+        ],
+        "conditions": [
+          "payments-service의 높은 CPU 사용률이 응답 지연을 초래할 가능성이 있음."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:gateway-service",
+          "monitoring:payments-service"
+        ],
+        "seconds": 1.2204
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "payments-service의 높은 CPU 사용률이 타임아웃의 원인일 수 있음."
+        ],
+        "conditions": [
+          "gateway-service와 payments-service 간의 네트워크 문제로 타임아웃 발생 가능성."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:gateway-service",
+          "monitoring:payments-service",
+          "runbook:network-timeout"
+        ],
+        "seconds": 1.4175
+      }
+    ]
+  },
+  {
+    "case_id": "q05",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 급증은 auth-service의 커넥션 풀 사용률과 관련이 있을 수 있다."
+        ],
+        "conditions": [
+          "auth-service의 상태가 저하된 것은 CPU 사용량과 커넥션 풀 사용률 때문일 수 있다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:web-01",
+          "monitoring:auth-service"
+        ],
+        "seconds": 1.2635
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 급증은 auth-service의 커넥션 풀 사용률과 관련이 있을 수 있다."
+        ],
+        "conditions": [
+          "auth-service의 CPU 사용률이 78%로 높은 상태이다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:web-01",
+          "monitoring:auth-service",
+          "runbook:cpu-spike"
+        ],
+        "seconds": 1.1886
+      }
+    ]
+  },
+  {
+    "case_id": "q06",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "공통 원인으로 메모리 누수 또는 CPU 급증이 있을 수 있음."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "monitoring:cache-service",
+          "runbook:memory-leak"
+        ],
+        "seconds": 1.1274
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "payments-service와 cache-service의 저하는 시스템 자원 부족과 관련이 있을 수 있다."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "monitoring:cache-service"
+        ],
+        "seconds": 1.5124
+      }
+    ]
+  },
+  {
+    "case_id": "q07",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q08",
+    "repeat": 1,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q09",
+    "repeat": 1,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q10",
+    "repeat": 1,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q10",
+    "repeat": 1,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q01_sustained",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "payments-service: cpu_series 자료 제공"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 사용량 증가가 결제 응답 지연의 원인일 수 있음."
+        ],
+        "conditions": [
+          "CPU 사용량이 80%를 초과하여 성능 저하가 발생할 가능성이 있음."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "evidence:payments-service"
+        ],
+        "seconds": 1.5386
+      }
+    ]
+  },
+  {
+    "case_id": "q01_duplicate_batch",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": true,
+        "reasons": [
+          "payments-service: logs 자료 제공"
+        ]
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "logs",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "결제 응답 지연은 중복 작업으로 인한 CPU 과부하 때문일 수 있음."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "evidence:payments-service"
+        ],
+        "seconds": 1.1469
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_89_9",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_90_0",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_90_1",
+    "repeat": 1,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q01",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q03",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q04",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "gateway-service의 타임아웃은 payments-service의 높은 CPU 사용량과 관련이 있을 수 있음."
+        ],
+        "conditions": [
+          "gateway-service와 payments-service 모두 상태가 저하됨."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:gateway-service",
+          "monitoring:payments-service"
+        ],
+        "seconds": 1.3985
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "payments-service의 높은 CPU 사용률이 타임아웃의 원인일 수 있음."
+        ],
+        "conditions": [
+          "gateway-service와 payments-service 간의 네트워크 문제로 타임아웃 발생 가능성."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:gateway-service",
+          "monitoring:payments-service",
+          "runbook:network-timeout"
+        ],
+        "seconds": 1.4466
+      }
+    ]
+  },
+  {
+    "case_id": "q05",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 급증은 auth-service의 커넥션 풀 사용률과 관련이 있을 수 있다."
+        ],
+        "conditions": [
+          "auth-service의 상태가 저하된 것은 CPU 사용량과 커넥션 풀 사용률 때문일 수 있다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:web-01",
+          "monitoring:auth-service"
+        ],
+        "seconds": 1.3361
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 급증은 auth-service의 커넥션 풀 사용률과 관련이 있을 수 있다."
+        ],
+        "conditions": [
+          "auth-service의 CPU 사용률이 90%를 넘으면 추가 조치가 필요하다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:web-01",
+          "monitoring:auth-service",
+          "runbook:cpu-spike"
+        ],
+        "seconds": 1.3783
+      }
+    ]
+  },
+  {
+    "case_id": "q06",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "payments-service와 cache-service의 저하는 시스템 자원 부족과 관련이 있을 수 있다."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "monitoring:cache-service"
+        ],
+        "seconds": 1.0406
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "공통 원인으로 메모리 누수 또는 CPU 급증이 있을 수 있음."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "monitoring:cache-service",
+          "runbook:memory-leak"
+        ],
+        "seconds": 1.1496
+      }
+    ]
+  },
+  {
+    "case_id": "q07",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q08",
+    "repeat": 2,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q09",
+    "repeat": 2,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q10",
+    "repeat": 2,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q10",
+    "repeat": 2,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q01_sustained",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "payments-service: cpu_series 자료 제공"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 사용량 증가가 결제 응답 지연의 원인일 수 있음."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "evidence:payments-service"
+        ],
+        "seconds": 1.3188
+      }
+    ]
+  },
+  {
+    "case_id": "q01_duplicate_batch",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": true,
+        "reasons": [
+          "payments-service: logs 자료 제공"
+        ]
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "logs",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "결제 응답 지연은 중복 작업으로 인한 CPU 과부하 때문일 수 있음."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "evidence:payments-service"
+        ],
+        "seconds": 1.0957
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_89_9",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_90_0",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_90_1",
+    "repeat": 2,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q01",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q03",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q04",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "gateway-service의 degraded 상태가 payments-service로의 요청 타임아웃에 기여할 수 있음."
+        ],
+        "conditions": [
+          "payments-service의 높은 CPU 사용률이 응답 지연을 초래할 가능성이 있음."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:gateway-service",
+          "monitoring:payments-service"
+        ],
+        "seconds": 1.613
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "payments-service의 높은 CPU 사용률이 타임아웃의 원인일 수 있음."
+        ],
+        "conditions": [
+          "gateway-service와 payments-service 간의 네트워크 문제로 타임아웃 발생 가능성."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:gateway-service",
+          "monitoring:payments-service",
+          "runbook:network-timeout"
+        ],
+        "seconds": 1.392
+      }
+    ]
+  },
+  {
+    "case_id": "q05",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 급증은 auth-service의 커넥션 풀 사용률과 관련이 있을 수 있다."
+        ],
+        "conditions": [
+          "auth-service의 상태가 저하된 것은 CPU 사용량과 커넥션 풀 사용률 때문일 수 있다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:web-01",
+          "monitoring:auth-service"
+        ],
+        "seconds": 1.4499
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 급증은 auth-service의 커넥션 풀 사용률과 관련이 있을 수 있다."
+        ],
+        "conditions": [
+          "auth-service의 CPU 사용률이 78%로 높은 상태이다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:web-01",
+          "monitoring:auth-service",
+          "runbook:cpu-spike"
+        ],
+        "seconds": 1.3884
+      }
+    ]
+  },
+  {
+    "case_id": "q06",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 관측 비교"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": true,
+        "reasons": [
+          "여러 서비스의 조치 적용 조건 비교"
+        ]
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "payments-service와 cache-service의 저하는 시스템 자원 사용량과 관련이 있을 수 있다."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "monitoring:cache-service"
+        ],
+        "seconds": 1.4414
+      },
+      {
+        "role": "runbook",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "공통 원인으로 메모리 누수 또는 CPU 급증이 있을 수 있다."
+        ],
+        "conditions": [
+          "payments-service의 CPU 사용률이 91%를 초과하여 성능 저하가 발생했다."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "monitoring:cache-service",
+          "runbook:memory-leak"
+        ],
+        "seconds": 1.3707
+      }
+    ]
+  },
+  {
+    "case_id": "q07",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q08",
+    "repeat": 3,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q09",
+    "repeat": 3,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q10",
+    "repeat": 3,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q10",
+    "repeat": 3,
+    "selection": {},
+    "findings": []
+  },
+  {
+    "case_id": "q01_sustained",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": true,
+        "reasons": [
+          "payments-service: cpu_series 자료 제공"
+        ]
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "CPU 사용량 증가가 결제 응답 지연의 원인일 수 있음."
+        ],
+        "conditions": [
+          "CPU 사용량이 80%를 초과하여 서비스 성능 저하가 발생할 가능성."
+        ],
+        "unknowns": [],
+        "evidence_ids": [
+          "monitoring:payments-service",
+          "evidence:payments-service"
+        ],
+        "seconds": 1.4061
+      }
+    ]
+  },
+  {
+    "case_id": "q01_duplicate_batch",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": true,
+        "reasons": [
+          "payments-service: logs 자료 제공"
+        ]
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "logs",
+        "status": "completed",
+        "observations": [],
+        "hypotheses": [
+          "결제 응답 지연은 중복 작업으로 인한 CPU 과부하 때문일 수 있음."
+        ],
+        "conditions": [],
+        "unknowns": [],
+        "evidence_ids": [
+          "evidence:payments-service"
+        ],
+        "seconds": 0.9906
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_89_9",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_90_0",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  },
+  {
+    "case_id": "q02_memory_90_1",
+    "repeat": 3,
+    "selection": {
+      "metrics": {
+        "enabled": false,
+        "reasons": []
+      },
+      "logs": {
+        "enabled": false,
+        "reasons": []
+      },
+      "runbook": {
+        "enabled": false,
+        "reasons": []
+      }
+    },
+    "findings": [
+      {
+        "role": "logs",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "metrics",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      },
+      {
+        "role": "runbook",
+        "status": "skipped",
+        "reason": "전문 분석 불필요: RAG와 원문 검증으로 처리",
+        "seconds": 0.0
+      }
+    ]
+  }
+]

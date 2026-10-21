@@ -1,0 +1,28 @@
+{
+  "description": "Authored before retrieval calibration. Only development split selects thresholds; test labels never enter search inputs.",
+  "development": [
+    {"id":"d1","query":"프로세서가 바쁘고 처리량이 몰려 계산 자원이 포화됐습니다","expected":["cpu-spike"]},
+    {"id":"d2","query":"해제되지 않는 객체 때문에 힙이 계속 커집니다","expected":["memory-leak"]},
+    {"id":"d3","query":"저장 볼륨에 남은 공간이 없고 로그 파일이 쌓입니다","expected":["disk-full"]},
+    {"id":"d4","query":"커넥션 풀 대기와 p95 응답 지연이 늘었습니다","expected":["high-latency"]},
+    {"id":"d5","query":"서비스 간 연결이 끊기고 패킷이 유실됩니다","expected":["network-timeout"]},
+    {"id":"d6","query":"데이터베이스가 내려가서 복제본으로 전환을 검토합니다","expected":["db-down"]},
+    {"id":"d7","query":"CPU가 치솟고 동시에 네트워크 패킷 손실이 생겼습니다","expected":["cpu-spike","network-timeout"]},
+    {"id":"d8","query":"글꼴과 버튼 색상을 바꾸는 절차가 필요합니다","expected":[]},
+    {"id":"d9","query":"TLS 인증서 갱신 절차를 알려주세요","expected":[]}
+  ],
+  "test": [
+    {"id":"t1","query":"배치가 겹친 뒤 연산 자원이 꽉 차 다른 요청을 처리하지 못합니다","expected":["cpu-spike"]},
+    {"id":"t2","query":"사용하지 않는 객체가 회수되지 않아 프로세스의 점유 공간이 계속 불어납니다","expected":["memory-leak"]},
+    {"id":"t3","query":"기록 파일과 오래된 백업 때문에 새 파일을 기록할 여유가 없습니다","expected":["disk-full"]},
+    {"id":"t4","query":"응답 상위 백분위가 나빠졌고 연결을 빌리려고 기다리는 작업이 많습니다","expected":["high-latency"]},
+    {"id":"t5","query":"이름 해석이 실패하고 서비스 사이의 연결이 제한 시간 안에 맺어지지 않습니다","expected":["network-timeout"]},
+    {"id":"t6","query":"주 데이터 저장소가 응답하지 않아 복제 노드 승격이 필요해 보입니다","expected":["db-down"]},
+    {"id":"t7","query":"계산 부하가 치솟는 동시에 할당한 객체가 반환되지 않고 쌓입니다","expected":["cpu-spike","memory-leak"]},
+    {"id":"t8","query":"로그 보관으로 저장 공간이 소진됐고 서비스 간 패킷도 계속 유실됩니다","expected":["disk-full","network-timeout"]},
+    {"id":"t9","query":"과도한 연산 부하와 DNS 해석 실패를 함께 조사해주세요","expected":["cpu-spike","network-timeout"]},
+    {"id":"t10","query":"로그인 화면의 로고 이미지를 교체하고 싶습니다","expected":[]},
+    {"id":"t11","query":"개인정보 보존 기간에 관한 사내 법무 규정을 찾습니다","expected":[]},
+    {"id":"t12","query":"서버 인증서의 만료일을 갱신하는 매뉴얼이 필요합니다","expected":[]}
+  ]
+}

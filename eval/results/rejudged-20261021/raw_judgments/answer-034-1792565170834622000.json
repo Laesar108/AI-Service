@@ -1,0 +1,29 @@
+{
+  "judge": {
+    "grounding_pass": false,
+    "conditions_pass": null,
+    "request_pass": false,
+    "actionability_pass": null,
+    "irrelevant_advice": true,
+    "issues": [
+      "billing-service가 아닌 auth-service의 모니터링 결과를 제공하여 'billing-service가 조회 목록에 없음을 안내한다'는 기준을 충족하지 못했습니다.",
+      "auth-service의 상태를 임의로 조회하여 'auth-service 등 다른 서비스를 임의로 대체 조회하지 않는다'는 기준을 위반했습니다.",
+      "billing-service와 관련 없는 auth-service의 조치를 권고하여 실제 관측과 연관 없는 다른 장애의 조치를 권고했습니다."
+    ],
+    "reasons": {
+      "grounding_pass": "billing-service가 아닌 auth-service의 데이터를 사용하여 잘못된 근거를 제시했습니다.",
+      "conditions_pass": "applicability가 false이므로 null입니다.",
+      "request_pass": "billing-service에 대한 조회가 아닌 auth-service에 대한 조회 결과를 제공하여 요청을 충족하지 못했습니다.",
+      "actionability_pass": "applicability가 false이므로 null입니다.",
+      "irrelevant_advice": "billing-service와 관련 없는 auth-service의 조치를 권고했습니다."
+    }
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 1677,
+    "input_tokens": 1446,
+    "output_tokens": 231,
+    "cached_input_tokens": 1280,
+    "usd": 0.008385
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judge": {
+    "grounding_pass": false,
+    "conditions_pass": null,
+    "request_pass": false,
+    "actionability_pass": null,
+    "irrelevant_advice": true,
+    "issues": [
+      "billing-service가 조회 목록에 없음을 안내하지 않았습니다.",
+      "auth-service를 임의로 대체 조회하였습니다.",
+      "모니터링 결과와 조치가 billing-service와 관련이 없습니다."
+    ]
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 1520,
+    "input_tokens": 1445,
+    "output_tokens": 75,
+    "cached_input_tokens": 1280,
+    "usd": 0.0076
+  }
+}

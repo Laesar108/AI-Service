@@ -1,0 +1,508 @@
+{
+  "all": {
+    "messages": 48,
+    "ok": 48,
+    "scored": 48,
+    "total_tokens": 121885,
+    "chat_tokens": 119878,
+    "embedding_tokens": 2007,
+    "estimated_usd": 0.33646019000000005,
+    "median_seconds": 5.2735,
+    "p95_seconds": 8.4307,
+    "incident_median_seconds": 5.7783999999999995,
+    "rewrites": 0,
+    "tool_retries": 0,
+    "validation": {
+      "passed": 36,
+      "not_applicable": 12
+    },
+    "specialist_calls": 24,
+    "specialist_output_tokens": 1648,
+    "specialist_mean_output_tokens": 68.66666666666667,
+    "specialist_statuses": {
+      "skipped": 84,
+      "completed": 24
+    },
+    "stage_usage": {
+      "retrieval": {
+        "calls": 36,
+        "tokens": 2007,
+        "median_seconds": 0.27010956197045743
+      },
+      "writer": {
+        "calls": 36,
+        "tokens": 53913,
+        "median_seconds": 4.00044612493366
+      },
+      "reviewer": {
+        "calls": 36,
+        "tokens": 47870,
+        "median_seconds": 0.7530617915326729
+      },
+      "researcher.metrics": {
+        "calls": 12,
+        "tokens": 6970,
+        "median_seconds": 1.3987371670082211
+      },
+      "researcher.runbook": {
+        "calls": 9,
+        "tokens": 8406,
+        "median_seconds": 1.3742367080412805
+      },
+      "router": {
+        "calls": 9,
+        "tokens": 630,
+        "median_seconds": 0.8024758750107139
+      },
+      "chat": {
+        "calls": 9,
+        "tokens": 682,
+        "median_seconds": 0.9956937080714852
+      },
+      "researcher.logs": {
+        "calls": 3,
+        "tokens": 1407,
+        "median_seconds": 1.0908234999515116
+      }
+    },
+    "retrieval_worker_overlap": {
+      "eligible_requests": 15,
+      "overlapping_requests": 15,
+      "median_overlap_seconds": 0.25528045929968357
+    },
+    "quality": {
+      "grounding_pass": {
+        "passed": 48,
+        "total": 48
+      },
+      "conditions_pass": {
+        "passed": 34,
+        "total": 36
+      },
+      "request_pass": {
+        "passed": 48,
+        "total": 48
+      },
+      "actionability_pass": {
+        "passed": 36,
+        "total": 37
+      }
+    },
+    "incident_quality": {
+      "grounding_pass": {
+        "passed": 36,
+        "total": 36
+      },
+      "conditions_pass": {
+        "passed": 34,
+        "total": 36
+      },
+      "request_pass": {
+        "passed": 36,
+        "total": 36
+      },
+      "actionability_pass": {
+        "passed": 36,
+        "total": 36
+      }
+    },
+    "irrelevant_advice": 0,
+    "target_pass": {
+      "passed": 48,
+      "total": 48
+    },
+    "judge_estimated_usd": 0.17516249999999997
+  },
+  "main": {
+    "messages": 33,
+    "ok": 33,
+    "scored": 33,
+    "total_tokens": 77093,
+    "chat_tokens": 75833,
+    "embedding_tokens": 1260,
+    "estimated_usd": 0.20195470000000001,
+    "median_seconds": 5.2379,
+    "p95_seconds": 8.4307,
+    "incident_median_seconds": 5.7226,
+    "rewrites": 0,
+    "tool_retries": 0,
+    "validation": {
+      "passed": 21,
+      "not_applicable": 12
+    },
+    "specialist_calls": 18,
+    "specialist_output_tokens": 1298,
+    "specialist_mean_output_tokens": 72.11111111111111,
+    "specialist_statuses": {
+      "skipped": 45,
+      "completed": 18
+    },
+    "stage_usage": {
+      "retrieval": {
+        "calls": 21,
+        "tokens": 1260,
+        "median_seconds": 0.261036166921258
+      },
+      "writer": {
+        "calls": 21,
+        "tokens": 32744,
+        "median_seconds": 4.273514667060226
+      },
+      "reviewer": {
+        "calls": 21,
+        "tokens": 28881,
+        "median_seconds": 0.7437658330891281
+      },
+      "researcher.metrics": {
+        "calls": 9,
+        "tokens": 4490,
+        "median_seconds": 1.3948395000770688
+      },
+      "researcher.runbook": {
+        "calls": 9,
+        "tokens": 8406,
+        "median_seconds": 1.3742367080412805
+      },
+      "router": {
+        "calls": 9,
+        "tokens": 630,
+        "median_seconds": 0.8024758750107139
+      },
+      "chat": {
+        "calls": 9,
+        "tokens": 682,
+        "median_seconds": 0.9956937080714852
+      }
+    },
+    "retrieval_worker_overlap": {
+      "eligible_requests": 9,
+      "overlapping_requests": 9,
+      "median_overlap_seconds": 0.25433858414180577
+    },
+    "quality": {
+      "grounding_pass": {
+        "passed": 33,
+        "total": 33
+      },
+      "conditions_pass": {
+        "passed": 21,
+        "total": 21
+      },
+      "request_pass": {
+        "passed": 33,
+        "total": 33
+      },
+      "actionability_pass": {
+        "passed": 21,
+        "total": 22
+      }
+    },
+    "incident_quality": {
+      "grounding_pass": {
+        "passed": 21,
+        "total": 21
+      },
+      "conditions_pass": {
+        "passed": 21,
+        "total": 21
+      },
+      "request_pass": {
+        "passed": 21,
+        "total": 21
+      },
+      "actionability_pass": {
+        "passed": 21,
+        "total": 21
+      }
+    },
+    "irrelevant_advice": 0,
+    "target_pass": {
+      "passed": 33,
+      "total": 33
+    },
+    "judge_estimated_usd": 0.11377250000000003
+  },
+  "boundaries": {
+    "messages": 15,
+    "ok": 15,
+    "scored": 15,
+    "total_tokens": 44792,
+    "chat_tokens": 44045,
+    "embedding_tokens": 747,
+    "estimated_usd": 0.13450549,
+    "median_seconds": 5.8342,
+    "p95_seconds": 9.7495,
+    "incident_median_seconds": 5.8342,
+    "rewrites": 0,
+    "tool_retries": 0,
+    "validation": {
+      "passed": 15
+    },
+    "specialist_calls": 6,
+    "specialist_output_tokens": 350,
+    "specialist_mean_output_tokens": 58.333333333333336,
+    "specialist_statuses": {
+      "skipped": 39,
+      "completed": 6
+    },
+    "stage_usage": {
+      "retrieval": {
+        "calls": 15,
+        "tokens": 747,
+        "median_seconds": 0.2786142078693956
+      },
+      "researcher.metrics": {
+        "calls": 3,
+        "tokens": 2480,
+        "median_seconds": 1.4026348339393735
+      },
+      "writer": {
+        "calls": 15,
+        "tokens": 21169,
+        "median_seconds": 3.9152461250778288
+      },
+      "reviewer": {
+        "calls": 15,
+        "tokens": 18989,
+        "median_seconds": 0.7599664169829339
+      },
+      "researcher.logs": {
+        "calls": 3,
+        "tokens": 1407,
+        "median_seconds": 1.0908234999515116
+      }
+    },
+    "retrieval_worker_overlap": {
+      "eligible_requests": 6,
+      "overlapping_requests": 6,
+      "median_overlap_seconds": 0.2647826875327155
+    },
+    "quality": {
+      "grounding_pass": {
+        "passed": 15,
+        "total": 15
+      },
+      "conditions_pass": {
+        "passed": 13,
+        "total": 15
+      },
+      "request_pass": {
+        "passed": 15,
+        "total": 15
+      },
+      "actionability_pass": {
+        "passed": 15,
+        "total": 15
+      }
+    },
+    "incident_quality": {
+      "grounding_pass": {
+        "passed": 15,
+        "total": 15
+      },
+      "conditions_pass": {
+        "passed": 13,
+        "total": 15
+      },
+      "request_pass": {
+        "passed": 15,
+        "total": 15
+      },
+      "actionability_pass": {
+        "passed": 15,
+        "total": 15
+      }
+    },
+    "irrelevant_advice": 0,
+    "target_pass": {
+      "passed": 15,
+      "total": 15
+    },
+    "judge_estimated_usd": 0.06139
+  },
+  "simple_main": {
+    "messages": 12,
+    "ok": 12,
+    "scored": 12,
+    "total_tokens": 29806,
+    "chat_tokens": 29194,
+    "embedding_tokens": 612,
+    "estimated_usd": 0.10395723999999998,
+    "median_seconds": 5.2683,
+    "p95_seconds": 6.0701,
+    "incident_median_seconds": 5.2683,
+    "rewrites": 0,
+    "tool_retries": 0,
+    "validation": {
+      "passed": 12
+    },
+    "specialist_calls": 0,
+    "specialist_output_tokens": 0,
+    "specialist_mean_output_tokens": 0,
+    "specialist_statuses": {
+      "skipped": 36
+    },
+    "stage_usage": {
+      "retrieval": {
+        "calls": 12,
+        "tokens": 612,
+        "median_seconds": 0.2544517705682665
+      },
+      "writer": {
+        "calls": 12,
+        "tokens": 15240,
+        "median_seconds": 4.287982791545801
+      },
+      "reviewer": {
+        "calls": 12,
+        "tokens": 13954,
+        "median_seconds": 0.7342123329872265
+      }
+    },
+    "retrieval_worker_overlap": {
+      "eligible_requests": 0,
+      "overlapping_requests": 0,
+      "median_overlap_seconds": null
+    },
+    "quality": {
+      "grounding_pass": {
+        "passed": 12,
+        "total": 12
+      },
+      "conditions_pass": {
+        "passed": 12,
+        "total": 12
+      },
+      "request_pass": {
+        "passed": 12,
+        "total": 12
+      },
+      "actionability_pass": {
+        "passed": 12,
+        "total": 12
+      }
+    },
+    "incident_quality": {
+      "grounding_pass": {
+        "passed": 12,
+        "total": 12
+      },
+      "conditions_pass": {
+        "passed": 12,
+        "total": 12
+      },
+      "request_pass": {
+        "passed": 12,
+        "total": 12
+      },
+      "actionability_pass": {
+        "passed": 12,
+        "total": 12
+      }
+    },
+    "irrelevant_advice": 0,
+    "target_pass": {
+      "passed": 12,
+      "total": 12
+    },
+    "judge_estimated_usd": 0.0447
+  },
+  "complex_main": {
+    "messages": 9,
+    "ok": 9,
+    "scored": 9,
+    "total_tokens": 45975,
+    "chat_tokens": 45327,
+    "embedding_tokens": 648,
+    "estimated_usd": 0.09772146000000001,
+    "median_seconds": 6.1569,
+    "p95_seconds": 8.9316,
+    "incident_median_seconds": 6.1569,
+    "rewrites": 0,
+    "tool_retries": 0,
+    "validation": {
+      "passed": 9
+    },
+    "specialist_calls": 18,
+    "specialist_output_tokens": 1298,
+    "specialist_mean_output_tokens": 72.11111111111111,
+    "specialist_statuses": {
+      "skipped": 9,
+      "completed": 18
+    },
+    "stage_usage": {
+      "retrieval": {
+        "calls": 9,
+        "tokens": 648,
+        "median_seconds": 0.261036166921258
+      },
+      "researcher.metrics": {
+        "calls": 9,
+        "tokens": 4490,
+        "median_seconds": 1.3948395000770688
+      },
+      "researcher.runbook": {
+        "calls": 9,
+        "tokens": 8406,
+        "median_seconds": 1.3742367080412805
+      },
+      "writer": {
+        "calls": 9,
+        "tokens": 17504,
+        "median_seconds": 3.7955987497698516
+      },
+      "reviewer": {
+        "calls": 9,
+        "tokens": 14927,
+        "median_seconds": 0.7740589170716703
+      }
+    },
+    "retrieval_worker_overlap": {
+      "eligible_requests": 9,
+      "overlapping_requests": 9,
+      "median_overlap_seconds": 0.25433858414180577
+    },
+    "quality": {
+      "grounding_pass": {
+        "passed": 9,
+        "total": 9
+      },
+      "conditions_pass": {
+        "passed": 9,
+        "total": 9
+      },
+      "request_pass": {
+        "passed": 9,
+        "total": 9
+      },
+      "actionability_pass": {
+        "passed": 9,
+        "total": 9
+      }
+    },
+    "incident_quality": {
+      "grounding_pass": {
+        "passed": 9,
+        "total": 9
+      },
+      "conditions_pass": {
+        "passed": 9,
+        "total": 9
+      },
+      "request_pass": {
+        "passed": 9,
+        "total": 9
+      },
+      "actionability_pass": {
+        "passed": 9,
+        "total": 9
+      }
+    },
+    "irrelevant_advice": 0,
+    "target_pass": {
+      "passed": 9,
+      "total": 9
+    },
+    "judge_estimated_usd": 0.0442925
+  }
+}

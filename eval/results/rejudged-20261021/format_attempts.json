@@ -1,0 +1,54 @@
+{
+  "last_attempt": {
+    "completed": 58,
+    "expected": 66,
+    "source_hashes_unchanged": true,
+    "failures": [
+      {
+        "blind_id": "answer-010",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-007",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-017",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-022",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-023",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-029",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-041",
+        "error_type": "AssertionError"
+      },
+      {
+        "blind_id": "answer-060",
+        "error_type": "AssertionError"
+      }
+    ],
+    "finished_at": "2026-10-21T06:46:12.498993+00:00"
+  },
+  "first_attempt_schema_retries": 10,
+  "raw_recovered": [
+    "answer-007",
+    "answer-010",
+    "answer-017",
+    "answer-022",
+    "answer-023",
+    "answer-029",
+    "answer-041",
+    "answer-060"
+  ],
+  "note": "Eight valid scores lacked optional reasons. Adopted stored raw judgments without further model calls. No score values changed. First ten rejected calls were traced but their local usage was not retained; accepted-call cost is not total billed cost."
+}

@@ -1,0 +1,12 @@
+.env
+.env.*
+
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+.DS_Store
+
+session.db*
+data/runbook_vectors.sqlite3*

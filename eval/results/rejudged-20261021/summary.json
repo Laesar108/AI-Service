@@ -1,0 +1,64 @@
+{
+  "evaluation": "Same gpt-4o judge/rubric; 33 matched answers per variant; raw automatic scores, not adjudicated truth",
+  "automatic_metrics": {
+    "grounding_pass": {
+      "before_true": 27,
+      "current_true": 33,
+      "denominator": 33,
+      "false_to_true": 6,
+      "true_to_false": 0,
+      "higher_is_better": true
+    },
+    "conditions_pass": {
+      "before_true": 18,
+      "current_true": 21,
+      "denominator": 21,
+      "false_to_true": 3,
+      "true_to_false": 0,
+      "higher_is_better": true
+    },
+    "request_pass": {
+      "before_true": 27,
+      "current_true": 33,
+      "denominator": 33,
+      "false_to_true": 6,
+      "true_to_false": 0,
+      "higher_is_better": true
+    },
+    "actionability_pass": {
+      "before_true": 17,
+      "current_true": 21,
+      "denominator": 21,
+      "false_to_true": 4,
+      "true_to_false": 0,
+      "higher_is_better": true
+    },
+    "irrelevant_advice": {
+      "before_true": 3,
+      "current_true": 0,
+      "denominator": 33,
+      "false_to_true": 0,
+      "true_to_false": 3,
+      "higher_is_better": false
+    },
+    "target_pass": {
+      "before_true": 30,
+      "current_true": 33,
+      "denominator": 33,
+      "false_to_true": 3,
+      "true_to_false": 0,
+      "higher_is_better": true
+    }
+  },
+  "source_hashes_unchanged": true,
+  "review": {
+    "items": 22,
+    "scope": "Source-text audit across all 66 answers; listed clear contradictions and missing preconditions; raw scores are retained, not overwritten. Not a complete replacement scorecard.",
+    "conclusion": "Automatic pass rates overestimate quality in BOTH versions; current 100% must not be reported as verified correctness."
+  },
+  "accepted_66_judge_calls": {
+    "tokens": 117221,
+    "estimated_usd": 0.33554,
+    "note": "Excludes 10 initial format-rejected calls whose local usage was not retained. Not the entire evaluation bill. No agent response costs were remeasured."
+  }
+}

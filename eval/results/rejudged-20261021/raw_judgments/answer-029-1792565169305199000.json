@@ -1,0 +1,20 @@
+{
+  "judge": {
+    "grounding_pass": true,
+    "conditions_pass": true,
+    "request_pass": false,
+    "actionability_pass": true,
+    "irrelevant_advice": false,
+    "issues": [
+      "질문에서 인증 서비스로 가정한다는 점을 밝히거나 대상을 되묻지 않았습니다."
+    ]
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 1741,
+    "input_tokens": 1683,
+    "output_tokens": 58,
+    "cached_input_tokens": 1536,
+    "usd": 0.008705
+  }
+}

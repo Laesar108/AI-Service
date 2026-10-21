@@ -1,0 +1,86 @@
+{
+  "auth-service": {
+    "logs": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "cpu_series": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "deployments": {
+      "availability": "not_provided",
+      "records": []
+    }
+  },
+  "web-01": {
+    "logs": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "cpu_series": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "deployments": {
+      "availability": "not_provided",
+      "records": []
+    }
+  },
+  "payments-service": {
+    "logs": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "cpu_series": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "deployments": {
+      "availability": "not_provided",
+      "records": []
+    }
+  },
+  "cache-service": {
+    "logs": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "cpu_series": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "deployments": {
+      "availability": "not_provided",
+      "records": []
+    }
+  },
+  "gateway-service": {
+    "logs": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "cpu_series": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "deployments": {
+      "availability": "not_provided",
+      "records": []
+    }
+  },
+  "log-service": {
+    "logs": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "cpu_series": {
+      "availability": "not_provided",
+      "records": []
+    },
+    "deployments": {
+      "availability": "not_provided",
+      "records": []
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "judge": {
+    "grounding_pass": false,
+    "conditions_pass": false,
+    "request_pass": true,
+    "actionability_pass": false,
+    "irrelevant_advice": false,
+    "issues": [
+      "'메모리 사용률이 90%에 근접하고 있으므로, 서비스 중단을 방지하기 위해 해당 프로세스를 즉시 재시작해야 합니다.'는 88.7%로 90% 이상 조건을 충족하지 않으므로 즉시 재시작을 요구하는 것은 잘못입니다.",
+      "'이는 메모리 누수 가능성을 시사합니다.'는 메모리 누수를 확정하지 않는다는 기준을 위반합니다."
+    ]
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 1851,
+    "input_tokens": 1718,
+    "output_tokens": 133,
+    "cached_input_tokens": 1536,
+    "usd": 0.009255
+  }
+}

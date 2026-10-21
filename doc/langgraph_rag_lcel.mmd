@@ -1,0 +1,38 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	route(route)
+	target(target)
+	chat_answer(chat_answer)
+	plan(plan)
+	research(research)
+	analysis(analysis)
+	write(write)
+	validate(validate)
+	fallback(fallback)
+	finalize(finalize)
+	retrieve(retrieve)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> route;
+	analysis --> write;
+	fallback --> finalize;
+	plan --> research;
+	research --> retrieve;
+	retrieve --> analysis;
+	route -.-> chat_answer;
+	route -.-> target;
+	target -. &nbsp;stop&nbsp; .-> __end__;
+	target -.-> plan;
+	validate -.-> fallback;
+	validate -.-> finalize;
+	validate -.-> write;
+	write --> validate;
+	chat_answer --> __end__;
+	finalize --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

@@ -1,0 +1,20 @@
+{
+  "judge": {
+    "grounding_pass": true,
+    "conditions_pass": true,
+    "request_pass": true,
+    "actionability_pass": false,
+    "irrelevant_advice": false,
+    "issues": [
+      "2) 즉시 조치로, 로그 파일, 임시 파일, 오래된 백업 파일 등 안전하게 삭제할 수 있는 항목을 정리하여 디스크 여유 공간을 확보해야 합니다. - 파일 안전성·보존 정책 확인 없이 특정 파일 삭제를 확정하지 않는다."
+    ]
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 1708,
+    "input_tokens": 1612,
+    "output_tokens": 96,
+    "cached_input_tokens": 1408,
+    "usd": 0.00854
+  }
+}

@@ -1,0 +1,645 @@
+{
+  "started_at": "2026-10-21T06:43:34.624947+00:00",
+  "model": "gpt-4o",
+  "temperature": 0,
+  "records_per_variant": 33,
+  "seed": 20261021,
+  "rubric_sha256": "146c3ec0d4fce354f562f478ec73d901d19a31f40d9413bfc8ec991784e000f3",
+  "source_hashes": {
+    "eval/results/before-live/scores.jsonl": "41b538dc7d5b035d2665d895bf988426d3aafbd99cc7aa1ebf484523efbb634d",
+    "eval/results/before-live/metadata.json": "bd916bd88f5d25bf86e17c47f10f786ae4fe1325ba57c81fe96beecf83b2e8a1",
+    "eval/results/before-live/responses.jsonl": "fc0a09e1f2a21316e9534283f1fd9483a8662754e7b7126db1bc20731fbdea0a",
+    "eval/results/before-live/completion.json": "09ea791671f6b071685d5be2a3b04d1fd3efda2f9a01e61d7b5dc9e4ddad849a",
+    "eval/results/current/responses_readable.md": "e95e5512658b62df0267e120b03956e9af9796f478eb9855d00b2e303a642f47",
+    "eval/results/current/summary.json": "c9cd38c0becaa2e38aee575ee5d4604472c481a93e3286c9ed337ad924ed6594",
+    "eval/results/current/judge_metadata.json": "0a2d9e9546e62de5e2c59ab62a27b3f3fefd81699df7e4fec34f21105ab9f837",
+    "eval/results/current/selection_records.json": "06ecb4f90a1e1b97d99020bbfa4ce212ed83e407408b16084cb2e3ce80985c08",
+    "eval/results/current/scores.jsonl": "afa1bdc234c232d2cf3d0086fc97715f4cf1bed840f95ee2801d848e9631b36c",
+    "eval/results/current/metadata.json": "d16ba587b05d27f8dce41dd56d2b056d032da0ee3b9d89212b9b94261af36e44",
+    "eval/results/current/responses.jsonl": "46f4788bbf259d1298eebb6781040dc7e4b784ec1d47c93c8f9a9ffd48e58438",
+    "eval/results/current/manual_quality_notes.json": "90dfd4aa08d23196c1014dd15b15b27ec62fafa3fdc4ddd6921ae454a95f82c3",
+    "eval/results/current/completion.json": "268e3d85b80daba479f3ea37d4547e18953fc1452d8b9fa18aff33599fe77725",
+    "eval/baseline/graph.py": "a28da5c2a9e24b84b4e23b721a9a2421e16125430c8b80afbdf404bc92b3e3dd",
+    "eval/baseline/openai_llm.py": "1f7b41e6a71df516f152cee1f371dd6a9b9ea9c02b82aee09ed9644db538f647",
+    "eval/baseline/mcp_server.py": "a0ebe98254b12a8732be104094c2ddf91c182a69d9a3ff6ce3f49fb858d2369f"
+  },
+  "pricing": {
+    "date": "2026-10-20",
+    "rates": {
+      "gpt-4o": [
+        2.5,
+        1.25,
+        10.0
+      ],
+      "gpt-4o-mini": [
+        0.15,
+        0.075,
+        0.6
+      ],
+      "text-embedding-3-small": [
+        0.02,
+        0.02,
+        0.0
+      ]
+    }
+  },
+  "scope": "Preserved answers only; no agent reruns; one blind judgment per answer.",
+  "order": [
+    {
+      "blind_id": "answer-000",
+      "variant": "current",
+      "key": [
+        "q08",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-001",
+      "variant": "current",
+      "key": [
+        "q03",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-002",
+      "variant": "current",
+      "key": [
+        "q06",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-003",
+      "variant": "current",
+      "key": [
+        "q10",
+        1,
+        2
+      ]
+    },
+    {
+      "blind_id": "answer-004",
+      "variant": "before",
+      "key": [
+        "q09",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-005",
+      "variant": "before",
+      "key": [
+        "q04",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-006",
+      "variant": "current",
+      "key": [
+        "q05",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-007",
+      "variant": "before",
+      "key": [
+        "q02",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-008",
+      "variant": "current",
+      "key": [
+        "q04",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-009",
+      "variant": "current",
+      "key": [
+        "q10",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-010",
+      "variant": "before",
+      "key": [
+        "q03",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-011",
+      "variant": "current",
+      "key": [
+        "q10",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-012",
+      "variant": "before",
+      "key": [
+        "q05",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-013",
+      "variant": "before",
+      "key": [
+        "q09",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-014",
+      "variant": "current",
+      "key": [
+        "q03",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-015",
+      "variant": "before",
+      "key": [
+        "q01",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-016",
+      "variant": "current",
+      "key": [
+        "q09",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-017",
+      "variant": "before",
+      "key": [
+        "q07",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-018",
+      "variant": "current",
+      "key": [
+        "q10",
+        2,
+        2
+      ]
+    },
+    {
+      "blind_id": "answer-019",
+      "variant": "before",
+      "key": [
+        "q01",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-020",
+      "variant": "before",
+      "key": [
+        "q06",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-021",
+      "variant": "current",
+      "key": [
+        "q06",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-022",
+      "variant": "before",
+      "key": [
+        "q02",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-023",
+      "variant": "before",
+      "key": [
+        "q08",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-024",
+      "variant": "current",
+      "key": [
+        "q03",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-025",
+      "variant": "before",
+      "key": [
+        "q04",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-026",
+      "variant": "before",
+      "key": [
+        "q10",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-027",
+      "variant": "before",
+      "key": [
+        "q05",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-028",
+      "variant": "current",
+      "key": [
+        "q04",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-029",
+      "variant": "before",
+      "key": [
+        "q07",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-030",
+      "variant": "before",
+      "key": [
+        "q08",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-031",
+      "variant": "current",
+      "key": [
+        "q10",
+        3,
+        2
+      ]
+    },
+    {
+      "blind_id": "answer-032",
+      "variant": "before",
+      "key": [
+        "q06",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-033",
+      "variant": "current",
+      "key": [
+        "q06",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-034",
+      "variant": "before",
+      "key": [
+        "q08",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-035",
+      "variant": "current",
+      "key": [
+        "q08",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-036",
+      "variant": "current",
+      "key": [
+        "q10",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-037",
+      "variant": "current",
+      "key": [
+        "q02",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-038",
+      "variant": "current",
+      "key": [
+        "q02",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-039",
+      "variant": "before",
+      "key": [
+        "q03",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-040",
+      "variant": "current",
+      "key": [
+        "q04",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-041",
+      "variant": "before",
+      "key": [
+        "q02",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-042",
+      "variant": "current",
+      "key": [
+        "q01",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-043",
+      "variant": "before",
+      "key": [
+        "q05",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-044",
+      "variant": "current",
+      "key": [
+        "q05",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-045",
+      "variant": "current",
+      "key": [
+        "q02",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-046",
+      "variant": "current",
+      "key": [
+        "q09",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-047",
+      "variant": "before",
+      "key": [
+        "q10",
+        2,
+        2
+      ]
+    },
+    {
+      "blind_id": "answer-048",
+      "variant": "current",
+      "key": [
+        "q07",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-049",
+      "variant": "current",
+      "key": [
+        "q07",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-050",
+      "variant": "current",
+      "key": [
+        "q08",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-051",
+      "variant": "current",
+      "key": [
+        "q01",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-052",
+      "variant": "before",
+      "key": [
+        "q10",
+        3,
+        2
+      ]
+    },
+    {
+      "blind_id": "answer-053",
+      "variant": "before",
+      "key": [
+        "q10",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-054",
+      "variant": "before",
+      "key": [
+        "q01",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-055",
+      "variant": "before",
+      "key": [
+        "q10",
+        1,
+        2
+      ]
+    },
+    {
+      "blind_id": "answer-056",
+      "variant": "before",
+      "key": [
+        "q10",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-057",
+      "variant": "before",
+      "key": [
+        "q06",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-058",
+      "variant": "before",
+      "key": [
+        "q03",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-059",
+      "variant": "current",
+      "key": [
+        "q07",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-060",
+      "variant": "before",
+      "key": [
+        "q07",
+        3,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-061",
+      "variant": "before",
+      "key": [
+        "q04",
+        2,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-062",
+      "variant": "current",
+      "key": [
+        "q05",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-063",
+      "variant": "before",
+      "key": [
+        "q09",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-064",
+      "variant": "current",
+      "key": [
+        "q01",
+        1,
+        1
+      ]
+    },
+    {
+      "blind_id": "answer-065",
+      "variant": "current",
+      "key": [
+        "q09",
+        1,
+        1
+      ]
+    }
+  ],
+  "applicability": "conditions/actionability: q01-q07 only; other fields: all 33",
+  "tracing": "Existing configured LangSmith setting retained; secrets redacted."
+}

@@ -1,0 +1,25 @@
+{
+  "judge": {
+    "grounding_pass": true,
+    "conditions_pass": true,
+    "request_pass": true,
+    "actionability_pass": true,
+    "irrelevant_advice": false,
+    "issues": [],
+    "reasons": {
+      "grounding_pass": "모든 수치와 상태가 실제 모니터링 결과와 일치한다.",
+      "conditions_pass": "CPU 사용률 90% 초과 시 인스턴스 추가 조건을 정확히 언급했다.",
+      "request_pass": "gateway-service와 payments-service 모두 조사하고 네트워크와 CPU 근거를 다뤘다.",
+      "actionability_pass": "구체적인 조치와 조건을 제안했다.",
+      "irrelevant_advice": "제안된 조치는 모두 관련성이 있다."
+    }
+  },
+  "usage": {
+    "model": "openai:gpt-4o",
+    "tokens": 2143,
+    "input_tokens": 2004,
+    "output_tokens": 139,
+    "cached_input_tokens": 1792,
+    "usd": 0.010715
+  }
+}

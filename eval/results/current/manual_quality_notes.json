@@ -1,0 +1,50 @@
+{
+  "scope": "Targeted assistant review of flagged and selected responses; not exhaustive human regrading. Original judge scores are unchanged.",
+  "items": [
+    {
+      "variant": "after",
+      "case_id": "q02_memory_90_1",
+      "repeat": 1,
+      "finding": "실제 남은 오류",
+      "quote": "메모리 사용률이 90% 이상으로 OOM 직전 상태에 해당하나",
+      "assessment": "사용률 숫자만으로 OOM 직전 상태를 확정할 수 없다. 평가자는 grounding을 통과시켰다."
+    },
+    {
+      "variant": "after",
+      "case_id": "q02_memory_90_1",
+      "repeat": 1,
+      "finding": "실제 남은 오류",
+      "quote": "CPU 사용률이 낮아 CPU 과부하로 인한 문제는 아님.",
+      "assessment": "현재 낮은 CPU 수치만으로 관련 원인을 배제했다."
+    },
+    {
+      "variant": "after",
+      "case_id": "q04",
+      "repeat": 1,
+      "finding": "실제 남은 조건 오류",
+      "quote": "CPU 사용률이 90% 이상 지속 시",
+      "assessment": "매뉴얼의 90% 초과를 90% 이상으로 바꾸었다. 자동 조건 판정은 통과했다."
+    },
+    {
+      "variant": "after",
+      "case_id": "q01_duplicate_batch",
+      "repeat": 1,
+      "finding": "남은 조치 전제 누락",
+      "quote": "오토스케일링 그룹에서 인스턴스를 추가하여 부하를 분산하는 방안을 고려",
+      "assessment": "지속 고부하 및 증설 가능 구성 확인을 이 조치와 명확히 연결하지 않았다."
+    },
+    {
+      "variant": "after",
+      "case_id": "q02_memory_90_1",
+      "repeat": 1,
+      "finding": "평가자 인용 오류",
+      "assessment": "평가자가 위반 문장으로 인용한 OOM 직전(90% 이상)이면... 문장은 답변 원문이 아니라 매뉴얼에서 가져왔다. 답변 자체의 실제 오류와 구분해야 한다."
+    },
+    {
+      "case_id": "q08",
+      "finding": "평가자 적용 범위 오류",
+      "assessment": "미등록 서비스 확인은 actionability=null이어야 하나 일부 반복을 false로 채점했다. 보고서는 등록 서비스 장애 질문만의 incident_quality를 사용하여 이를 분리했다.",
+      "variant": "after"
+    }
+  ]
+}

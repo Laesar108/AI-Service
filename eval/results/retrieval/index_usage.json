@@ -1,0 +1,16 @@
+[
+  {
+    "stage": "index_build",
+    "model": "text-embedding-3-small",
+    "usage": {
+      "tokens": 1495,
+      "input_tokens": 1495,
+      "output_tokens": 0,
+      "cached_input_tokens": 0
+    },
+    "seconds": 0.36844095890410244,
+    "estimated_usd": 2.9900000000000002e-05,
+    "kind": "embedding",
+    "items": 6
+  }
+]

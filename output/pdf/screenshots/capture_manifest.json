@@ -1,0 +1,29 @@
+{
+  "author": "G091 / 이병주",
+  "captured_on": "2026-10-21",
+  "source_url": "http://localhost:8600/",
+  "mode": "openai / multi",
+  "notes": "UI screenshots, not a controlled Before/After benchmark. Simple case was an existing response; complex and unknown cases were executed for this capture. No image content altered.",
+  "files": [
+    {
+      "file": "01-simple-final.png",
+      "sha256": "a12088ea1bf51b3b747ac162e933213c02c0f216ebb86c7e090dbf7d3bdc3a8e"
+    },
+    {
+      "file": "02-simple-flow.png",
+      "sha256": "c496fe8d6c8ac2448478a276951ef829c0d078b3508c1f601842749e7e26e3c2"
+    },
+    {
+      "file": "03-complex-final.png",
+      "sha256": "c0de8d8350cbf2e899eb8557ea8982fa7296c3809d920b876a06e921789d052d"
+    },
+    {
+      "file": "04-complex-flow.png",
+      "sha256": "b9bb86bb94b5870c3402577e14f6a2b69b9bc4f35a627e950d8962c8fcf27b69"
+    },
+    {
+      "file": "05-target-check.png",
+      "sha256": "4fbe98c0924023d8eb9f6f214ea35594ba87ee4c47bfcbb4eae9808f9ca42e76"
+    }
+  ]
+}
