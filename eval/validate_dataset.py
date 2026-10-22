@@ -1,4 +1,4 @@
-"""Validate fixed evaluation inputs offline; never imports the app or loads .env."""
+"""앱을 불러오거나 환경 설정 파일을 읽지 않고 고정 평가 입력을 오프라인으로 검사한다."""
 import argparse
 import hashlib
 import json
@@ -15,11 +15,11 @@ def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-# [PDF 6·8] 데이터 해시와 사례 구조를 검사해 Before/After 입력이 바뀌는 것을 방지한다.
+# [평가 데이터 검증] 데이터 해시와 사례 구조를 검사해 Before/After 입력이 바뀌는 것을 방지한다.
 def validate(root):
     root = Path(root)
     manifest = read_json(root / "manifest.json")
-    # Read only the explicit fixture allowlist, not arbitrary manifest paths.
+    # 목록에 적힌 임의 경로를 따르지 않고 명시적으로 허용한 고정 평가 파일만 읽는다.
     expected_files = {
         "cases.json",
         *("runbooks/" + name + ".md" for name in (

@@ -1,4 +1,4 @@
-"""Fixed-input real-LLM evaluation. Secrets are loaded locally, never serialized."""
+"""고정 입력으로 실제 LLM을 평가한다. 비밀 정보는 로컬에서 불러오되 결과에 직렬화하지 않는다."""
 import argparse
 import ast
 import asyncio
@@ -35,7 +35,7 @@ def prompt_function():
     return namespace['incident_analysis_prompt']
 
 
-# [PDF 6·8] 동일한 질문/관측/매뉴얼을 공급하는 평가 전용 MCP 대체 구현이다.
+# [고정 평가 환경] 동일한 질문/관측/매뉴얼을 공급하는 평가 전용 MCP 대체 구현이다.
 # 난수·네트워크·의도적 도구 장애를 제외하므로 브라우저 전체 지연 측정과 구분한다.
 class FixtureMCP:
     def __init__(self, dataset, case, fixture):
@@ -103,7 +103,7 @@ SECRETS = []
 
 # [Before 보존] 중간 개선판이 아닌 최초 코드만 로드한다. 보존 파일은 수정하지 않는다.
 def frozen_modules():
-    """Load original source without editing its files; resolve shared dependencies."""
+    """원본 파일을 수정하지 않고 불러오며 공통 의존성을 연결한다."""
     graph = load_module("agent.original_graph", ROOT/"eval/baseline/graph.py")
     llm = load_module("agent.original_openai", ROOT/"eval/baseline/openai_llm.py")
     return graph, llm
@@ -122,8 +122,8 @@ async def main(args):
     from agent.retrieval import configured_retriever
     from agent.telemetry import CALLS, STAGE, RATES, PRICING_DATE, PRICING_SOURCE
     frozen_graph, frozen_llm=frozen_modules()
-    # Original prompts, decisions and graph stay frozen. Share only API transport
-    # to capture input/output/cache token counts with the same request payload.
+    # 초기의 프롬프트, 판단 로직과 그래프는 유지한다. 동일한 요청 내용으로
+    # 입력·출력·캐시 토큰을 계측하기 위해 API 통신 구현만 공유한다.
     class FrozenFast(frozen_llm.OpenAIFastLLM):
         _chat=OpenAILLM._chat
     class FrozenQuality(frozen_llm.OpenAIQualityLLM):
@@ -142,7 +142,7 @@ async def main(args):
     fast_model=os.getenv("OPENAI_FAST_MODEL","gpt-4o-mini")
     quality_model=os.getenv("OPENAI_QUALITY_MODEL","gpt-4o")
     retriever=configured_retriever(ROOT/"eval/fixtures/v1/runbooks")
-    # Matching corpus hashes reuse index; build cost excluded from request latency.
+    # 문서 집합의 해시가 같으면 인덱스를 재사용하며 인덱스 생성 비용은 요청 지연시간에서 제외한다.
     build_calls=[];CALLS.set(build_calls);STAGE.set("index_build")
     if "after" in variants:
         await retriever.ensure_index()

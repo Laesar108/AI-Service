@@ -1,12 +1,12 @@
-"""all_total 통합 실습 — MCP Server (Wave 2 축).
+"""all_total 통합 실습 — MCP 서버 (단계 2 축).
 
-Tool / Resource / Prompt 3대 capability를 모두 노출하는 실제 fastmcp 서버.
+도구 / 리소스 / 프롬프트의 세 가지 기능을 모두 노출하는 실제 fastmcp 서버.
 FastAPI 백엔드(server.py)가 lifespan에서 이 파일을 subprocess(stdio)로 1회 기동해
-프로세스가 살아 있는 동안 재사용한다 (Wave 1 싱글턴 + Wave 2 표준화의 결합).
+프로세스가 살아 있는 동안 재사용한다 (단계 1 싱글턴 + 단계 2 표준화의 결합).
 
-- Tool    get_monitoring_status : 호출마다 값이 달라지는 동적 조회 → Tool이 맞다
-- Resource runbook://incident-response/{incident_type} : URI로 식별되는 정적 문서
-- Prompt  incident_analysis_prompt : 여러 Tool을 조합하는 표준 진단 절차를 강제
+- 도구 get_monitoring_status : 호출마다 값이 달라지는 동적 조회이므로 도구로 제공
+- 리소스 runbook://incident-response/{incident_type} : URI로 식별되는 정적 문서
+- 프롬프트 incident_analysis_prompt : 여러 도구를 조합하는 표준 진단 절차를 지정
 """
 import json
 import random
@@ -34,7 +34,7 @@ class SystemStatus(BaseModel):
 
 @mcp.tool()
 def get_monitoring_status(system_name: str) -> SystemStatus:
-    """지정된 시스템의 현재 모니터링 상태를 조회합니다 (호출마다 값이 달라지는 동적 Tool)."""
+    """지정된 시스템의 현재 모니터링 상태를 조회합니다 (호출마다 값이 달라지는 동적 도구)."""
     monitoring_data = json.loads((DATA_DIR / "monitoring.json").read_text())
     if system_name not in monitoring_data:
         return SystemStatus(
@@ -57,14 +57,14 @@ def get_monitoring_status(system_name: str) -> SystemStatus:
 
 @mcp.resource("runbook://incident-response/{incident_type}")
 def get_incident_runbook(incident_type: str) -> str:
-    """특정 incident 유형의 runbook(정적 문서)을 반환합니다."""
+    """특정 장애 유형의 대응 매뉴얼(정적 문서)을 반환합니다."""
     runbook_path = DATA_DIR / "runbooks" / f"{incident_type}.md"
     if not runbook_path.exists():
         return f"# Runbook Not Found\n\nNo runbook for incident type: {incident_type}"
     return runbook_path.read_text()
 
 
-# [PDF 8] 현재 지표만으로 로그/추세를 추정하지 않도록 별도 진단 근거 도구를 추가했다.
+# [진단 근거 수집] 현재 지표만으로 로그/추세를 추정하지 않도록 별도 진단 근거 도구를 추가했다.
 # 현재 소스는 모의 JSON이며 not_provided는 정상 판정이 아닌 자료 미제공이다.
 @mcp.tool()
 def get_diagnostic_evidence(system_name: str) -> dict:
@@ -85,7 +85,7 @@ def get_diagnostic_evidence(system_name: str) -> dict:
 
 @mcp.prompt()
 def incident_analysis_prompt(system_name: str, symptom: str) -> str:
-    """장애 진단 표준 절차 프롬프트 — planning 노드가 계획을 세울 때 이 절차를 따른다."""
+    """장애 진단 표준 절차 프롬프트 — 계획 노드가 계획을 세울 때 이 절차를 따른다."""
     return f"""다음 장애에 대해 표준 진단 절차를 수행하세요.
 
 ## 장애 정보

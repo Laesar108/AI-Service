@@ -1,4 +1,4 @@
-"""Summarize measured usage, quality and overlap without rerunning the models."""
+"""모델을 다시 실행하지 않고 측정된 사용량, 품질, 병렬 실행 구간의 겹침을 집계한다."""
 import argparse
 from collections import Counter, defaultdict
 import hashlib

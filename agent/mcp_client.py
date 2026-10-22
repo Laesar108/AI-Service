@@ -1,7 +1,7 @@
-"""Wave 2 — MCP 서버 여러 개를 subprocess(stdio)로 1회씩 기동해 재사용하는 클라이언트.
+"""단계 2 — MCP 서버 여러 개를 subprocess(stdio)로 1회씩 기동해 재사용하는 클라이언트.
 
-Wave 1의 교훈대로 서버(lifespan)에서 한 번만 연결을 만들고 모든 요청이 공유한다.
-Wave 9 데모용으로, 프로세스 최초의 get_monitoring_status 호출 1회는 일부러
+단계 1의 교훈대로 서버(lifespan)에서 한 번만 연결을 만들고 모든 요청이 공유한다.
+단계 9 데모용으로, 프로세스 최초의 get_monitoring_status 호출 1회는 일부러
 asyncio.TimeoutError를 던진다(transient) — with_retry가 backoff 후 복구해야 한다.
 
 연결 대상은 "ops"(mcp_server.py — monitoring tool + runbook resource + prompt, 실제
@@ -48,7 +48,7 @@ class MCPClient:
         self._stack: AsyncExitStack | None = None
         self.sessions: dict[str, ClientSession] = {}
         self._lock = asyncio.Lock()
-        self._flaky_pending = flaky_first_tool_call   # Wave 9 시뮬레이션
+        self._flaky_pending = flaky_first_tool_call   # 단계 9 시뮬레이션
 
     async def start(self) -> None:
         self._stack = AsyncExitStack()

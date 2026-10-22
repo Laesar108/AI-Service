@@ -1,6 +1,6 @@
 """LLM_BACKEND=openai — 실제 OpenAI API 백엔드 (fake_llm/ollama_llm과 동일 인터페이스).
 
-Wave 10a 구도를 실제 상용 API로: fast(기본 gpt-4o-mini)는 분류·계획·단순 대화,
+단계 10a 구도를 실제 상용 API로: fast(기본 gpt-4o-mini)는 분류·계획·단순 대화,
 quality(기본 gpt-4o)는 최종 답변 작성 전담. ollama_llm.py와 마찬가지로 실모델이라
 결정론은 아니다 — gate(W6)·replan(W7)·validator(W8)가 연출이 아니라 실제 방어선으로
 동작한다. Ollama와 달리 실제 과금이 발생하는 원격 API이므로, 이 백엔드로 실행하면
@@ -137,7 +137,7 @@ class OpenAIFastLLM(OpenAILLM):
                       "needs_analysis": bool(raw.get("needs_analysis", False))}
         except (json.JSONDecodeError, AttributeError):
             # JSON 모드는 "유효한 JSON"만 보장할 뿐 스키마까지 강제하진 않으므로,
-            # 필드 누락·오탐 시 코드 레벨 fallback을 둔다(W6 정신, ollama_llm.py와 동일).
+            # 필드 누락·오탐 시 코드 수준의 대체 처리을 둔다(W6 정신, ollama_llm.py와 동일).
             incident = bool(re.search(r"장애|진단|다운|지연|급증|incident|티켓", query))
             result = {"route": "incident" if incident else "chat",
                       "needs_analysis": False}

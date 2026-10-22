@@ -1,11 +1,11 @@
-"""all_total 통합 실습 — FastAPI 백엔드 (Wave 1·3·12·14 축 + 전체 조립).
+"""all_total 통합 실습 — FastAPI 백엔드 (단계 1·3·12·14 축 + 전체 조립).
 
-- Wave 1  : lifespan에서 Agent 번들(MCP 연결·LLM·그래프)을 프로세스당 정확히 1회 생성,
+- 단계 1  : lifespan에서 Agent 번들(MCP 연결·LLM·그래프)을 프로세스당 정확히 1회 생성,
             app.state로 모든 요청이 공유 (creation_count/instance_id로 증명)
-- Wave 2  : mcp_server.py를 subprocess(stdio)로 기동해 연결 유지
-- Wave 3  : GET /chat/stream — 그래프 실행 과정을 SSE 이벤트로 스트리밍
-- Wave 12 : 대화 이력을 SQLite(session.db)에 저장 — 재시작해도 유지
-- Wave 14 : SUPERVISOR_VERSION(v1/v2) 환경변수로 legacy/신형 파이프라인 즉시 전환
+- 단계 2  : mcp_server.py를 subprocess(stdio)로 기동해 연결 유지
+- 단계 3  : GET /chat/stream — 그래프 실행 과정을 SSE 이벤트로 스트리밍
+- 단계 12 : 대화 이력을 SQLite(session.db)에 저장 — 재시작해도 유지
+- 단계 14 : SUPERVISOR_VERSION(v1/v2) 환경변수로 기존/신형 파이프라인 즉시 전환
 - LangSmith: 요청당 chat_request 루트 run 아래로 노드·LLM·MCP 호출이 계층 기록됨
 """
 import json
@@ -30,10 +30,10 @@ from agent.session_store import SqliteSessionStore
 from agent.supervisor_v1 import run_v1
 from agent.retrieval import configured_retriever
 
-CREATION_COUNT = 0   # Wave 1 — 프로세스 내 Agent 번들 생성 횟수 (항상 1이어야 정상)
+CREATION_COUNT = 0   # 단계 1 — 프로세스 내 Agent 번들 생성 횟수 (항상 1이어야 정상)
 
 
-class ChatRequest(BaseModel):   # Wave 1 — Pydantic 요청 검증
+class ChatRequest(BaseModel):   # 단계 1 — Pydantic 요청 검증
     message: str
     thread_id: str = "default"
 
@@ -65,7 +65,7 @@ async def lifespan(app: FastAPI):
     global CREATION_COUNT
     CREATION_COUNT += 1
     mcp = MCPClient()
-    await mcp.start()   # Wave 2 — MCP subprocess는 서버 수명 동안 딱 1개
+    await mcp.start()   # 단계 2 — MCP subprocess는 서버 수명 동안 딱 1개
     backend, fast_llm, quality_llm = _build_llms()
     app.state.llm_backend = backend
     deps = SupervisorDeps(
@@ -79,7 +79,7 @@ async def lifespan(app: FastAPI):
     # [RAG 서비스 연결] 서버 시작 시 검색기를 주입하고 문서 인덱스를 준비해 요청 간 재사용한다.
     if deps.research_mode in ("rag", "multi"):
         deps.retriever = configured_retriever()
-        # Corpus index is reused across requests; query embeddings are measured separately.
+        # 문서 인덱스는 요청 간 재사용하고 검색어 임베딩의 사용량은 별도로 측정한다.
         await deps.retriever.ensure_index()
     app.state.deps = deps
     app.state.graph = build_graph(deps) if deps.version == "v2" else None
@@ -134,13 +134,13 @@ def _metadata(result: dict, run_id: str | None) -> dict:
 @traceable(name="chat_request")
 async def _handle_chat(message: str, thread_id: str) -> tuple[dict, str | None]:
     deps = app.state.deps
-    history = deps.session_store.load(thread_id)   # Wave 12
+    history = deps.session_store.load(thread_id)   # 단계 12
     if deps.version == "v2":
         result = await app.state.graph.ainvoke(
             {"query": message, "thread_id": thread_id, "history": history,
              "events": [], "cost_usd": 0.0})
     else:
-        result = await run_v1(deps, message, thread_id, history)   # Wave 14
+        result = await run_v1(deps, message, thread_id, history)   # 단계 14
     deps.session_store.append(thread_id, "user", message)
     deps.session_store.append(thread_id, "assistant", result["final"])
     rt = get_current_run_tree()
@@ -156,10 +156,10 @@ async def chat(req: ChatRequest):
 
 @app.get("/chat/stream")
 async def chat_stream(message: str, thread_id: str = "default"):
-    """Wave 3 — 그래프의 노드별 진행 상황을 SSE로 스트리밍.
+    """단계 3 — 그래프의 노드별 진행 상황을 SSE로 스트리밍.
 
     이벤트마다 'data: {json}\\n\\n' 형태로 내려보내고 마지막에 data: [DONE] 센티널을
-    보낸다 — 프론트엔드는 \\n\\n 경계로 이벤트를 분리해 파싱해야 한다(Wave 3b).
+    보낸다 — 프론트엔드는 \\n\\n 경계로 이벤트를 분리해 파싱해야 한다(단계 3b).
     """
     deps = app.state.deps
 

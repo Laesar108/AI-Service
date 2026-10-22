@@ -1,4 +1,4 @@
-"""Three compiled specialist subgraphs plus an explicit Supervisor join."""
+"""컴파일한 세 전문 분석 서브그래프와 명시적인 결과 취합 노드."""
 from typing import TypedDict
 import time
 from langgraph.graph import StateGraph, START, END
@@ -13,10 +13,10 @@ class WorkerState(TypedDict, total=False):
     finding: dict
 
 
-# [PDF 3] 단일 조사 역할을 metrics/logs/runbook의 컴파일된 전문 서브그래프로 분리했다.
+# [전문 분석 분리] 단일 조사 역할을 metrics/logs/runbook의 컴파일된 전문 서브그래프로 분리했다.
 def build_researcher(role, llm):
     async def prepare(state):
-        # Tool outputs are bounded upstream, and only this worker's evidence is sent.
+        # 도구 출력은 앞 단계에서 제한하며 이 작업자에게 필요한 근거만 전달한다.
         return {"evidence": state.get("evidence", [])}
 
     async def analyze(state):
@@ -100,7 +100,7 @@ def worker_node(role, llm):
 # [결과 취합] 생략 결과는 작성 문맥에서 제외하고 분석 실패/상충은 미확정으로 유지한다.
 async def supervisor_join(state):
     findings = sorted(state.get("findings", []), key=lambda f: f["role"])
-    # Preserve attributed hypotheses; majority agreement is never treated as evidence.
+    # 가설의 출처를 유지하며 여러 전문가의 동의를 사실의 근거로 취급하지 않는다.
     active = [f for f in findings if f["status"] != "skipped"]
     synthesis = {"specialists": active,
                  "rule": "서로 충돌하는 해석은 미확정으로 병기하고 원문 근거로 검증",
@@ -114,7 +114,7 @@ async def supervisor_join(state):
 # [병렬 경로 개선] 검색→Runbook 분석을 한 서브그래프로 묶어 지표/로그 완료를
 # 불필요하게 기다리지 않도록 했다. 최종 작성 전에는 모든 분기의 결과를 합류시킨다.
 def runbook_branch(deps):
-    """Keep retrieval -> runbook within one branch to avoid a sibling superstep barrier."""
+    """검색과 Runbook 분석을 같은 분기에 두어 다른 분기의 단계 완료를 불필요하게 기다리지 않도록 한다."""
     from .state import AgentState
     from functools import partial
 
@@ -135,17 +135,17 @@ def runbook_branch(deps):
     subgraph = graph.compile(name="runbook_pipeline")
 
     async def run(state):
-        # Reset the subgraph reducer input; return only this branch's findings.
+        # 서브그래프의 누적 입력을 초기화하고 이 분기의 분석 결과만 반환한다.
         result = await subgraph.ainvoke({**state, "findings": []})
         return {k: result[k] for k in ("collected", "retrieval", "missing_evidence",
                                       "events", "research_selection", "findings")}
     return run
 
 
-# [PDF 1] 질문과 서비스별 알림을 각각 검색해 복합 질문의 일부 증상이 묻히는 문제를 줄인다.
+# [검색어 구성] 질문과 서비스별 알림을 각각 검색해 복합 질문의 일부 증상이 묻히는 문제를 줄인다.
 async def retrieve_node(state, deps):
     metrics = [c["data"] for c in state["collected"] if c["source"] == "monitoring" and not c.get("error")]
-    # Separate observation queries keep a composite question from drowning out one symptom.
+    # 관측 알림별로 검색어를 분리해 복합 질문에서 일부 증상이 묻히지 않도록 한다.
     queries = [state["query"]] + [
         "관측 알림: " + "; ".join(m.get("alerts", [])) for m in metrics if m.get("alerts")]
     token = STAGE.set("retrieval")

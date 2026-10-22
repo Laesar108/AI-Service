@@ -1,4 +1,4 @@
-"""Evidence-driven specialist selection; no query IDs or expected answers."""
+"""질문 ID나 정답을 사용하지 않고 수집된 근거에 따라 전문 분석 역할을 선택한다."""
 
 
 # [추가 최적화] 전문 분석 상시 호출을 자료 기반 선택으로 변경했다. 별도 선택 LLM은 없다.
@@ -20,14 +20,14 @@ def research_selection(state):
             if evidence.get("availability") == "provided" and evidence.get("records"):
                 role = "metrics" if kind == "cpu_series" else "logs"
                 reasons[role].append(f"{item['target']}: {kind} 자료 제공")
-    # A healthy flag conflicting with alerts/high readings requires interpretation.
+    # 정상 상태 표시와 알림 또는 높은 지표가 상충하면 추가 해석이 필요하다.
     for m in metrics:
         if m.get("status") == "healthy" and (m.get("alerts") or
                 any(isinstance(m.get(k), (int, float)) and m[k] >= 90
                     for k in ("cpu_percent", "memory_percent"))):
             reasons["metrics"].append("정상 상태 표시와 관측 지표/알림이 상충")
             reasons["runbook"].append("상충 관측에 대한 조치 적용성 확인")
-    # Duplicate sources with different readings also deserve comparison.
+    # 같은 서비스에 대한 중복 관측값이 서로 다른 경우에도 비교가 필요하다.
     by_system = {}
     for m in metrics:
         values = (m.get("status"), m.get("cpu_percent"), m.get("memory_percent"))

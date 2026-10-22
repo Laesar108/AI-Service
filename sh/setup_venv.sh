@@ -6,7 +6,7 @@
 # 가정할 뿐 직접 만들어주지는 않는다 — 이 스크립트가 그 "맨 처음 한 번"을 담당한다.
 # 깨끗한 환경에서 이 폴더를 처음 받았다면(학생 배포 등) 가장 먼저 이걸 실행한다.
 #
-# ⚠️ 이 머신은 plain python3/pip가 alias로 엉뚱한 경로를 가리켜, venv를 만들어도
+# ⚠️ 이 머신은 python3/pip 명령의 별칭이 다른 경로를 가리켜, 가상환경을 만들어도
 # 그 안에 설치되는 게 아니라 시스템 전역에 설치돼버리는 경우가 실제로 있었다.
 # 그래서 설치 단계는 반드시 "activate" 대신 .venv 안의 python3 바이너리를
 # 절대/상대 경로로 직접 호출한다(아래 ./.venv/bin/python3 -m pip ...).
@@ -29,7 +29,7 @@ else
 fi
 
 # ── 2) 의존성 설치 — activate 대신 .venv의 python3를 직접 호출 ─────────
-#    (plain pip/python3가 alias로 다른 경로를 가리키는 머신에서도 항상
+#    (pip/python3 명령의 별칭이 다른 경로를 가리키는 머신에서도 항상
 #     .venv 안에 정확히 설치되도록 보장한다)
 echo "requirements.txt 설치 중..."
 ./.venv/bin/python3 -m pip install --upgrade pip --quiet

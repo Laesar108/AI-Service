@@ -1,4 +1,4 @@
-"""Blindly re-score preserved answers without changing or re-running the agents."""
+"""에이전트를 변경하거나 재실행하지 않고 보존한 답변의 버전을 가린 채 재채점한다."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -43,7 +43,7 @@ def key(row):
 
 
 def main(args):
-    # Source artifacts are read-only; only the new output directory receives scores.
+    # 원본 결과는 읽기만 하고 새 출력 디렉터리에만 점수를 저장한다.
     sources = {v: ROOT / 'eval/results' / name for v, name in
                [('before', 'before-live'), ('current', 'current')]}
     rows = {v: {key(r): r for r in read(p / 'responses.jsonl')} for v, p in sources.items()}
@@ -107,7 +107,7 @@ def main(args):
         start = time.perf_counter()
         with tracing_context(client=client):
             result = judge(safe(payload))
-        # Preserve even malformed judgments; retries must never silently discard evidence.
+        # 형식이 잘못된 판정도 보존하며 재시도 과정에서 근거를 임의로 버리지 않는다.
         raw_dir = out / 'raw_judgments'
         raw_dir.mkdir(exist_ok=True)
         stamp = time.time_ns()
@@ -118,8 +118,8 @@ def main(args):
             assert type(score.get(f)) is bool, 'invalid judgment'
         for f in ('conditions_pass', 'actionability_pass'):
             assert (type(score.get(f)) is bool) if applicable else (score.get(f) is None), 'invalid applicability'
-        # Missing explanatory text does not invalidate otherwise well-typed scores.
-        # Keep the model response unchanged and flag this omission for audit.
+        # 설명 문구가 없어도 점수의 자료형이 올바르면 해당 점수 자체는 무효로 처리하지 않는다.
+        # 모델 응답은 그대로 보존하고 설명 누락을 별도 검토 항목으로 표시한다.
         actual = {c['arguments']['system_name'] for c in row['tool_calls']
                   if c.get('tool') == 'get_monitoring_status'}
         policy = case['expected']['target_policy']

@@ -1,9 +1,9 @@
-"""State contract shared by the graph's independently testable nodes."""
+"""독립적으로 테스트할 수 있는 그래프 노드들이 공유하는 상태 구조."""
 from typing import TypedDict, Annotated
 import operator
 
 
-# [PDF 2·3] 분리된 노드의 공유 상태를 명시했다. 근거 누락·검증·검색·전문 분석 상태를 추가했다.
+# [공유 상태 정의] 분리된 노드의 공유 상태를 명시했다. 근거 누락·검증·검색·전문 분석 상태를 추가했다.
 class AgentState(TypedDict, total=False):
     query: str
     thread_id: str

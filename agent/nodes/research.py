@@ -5,7 +5,7 @@ from ..retry import with_retry
 from .intake import event
 
 
-# [PDF 2·8] LLM 자유 계획 대신 확인된 대상별 지표·추가 근거 조회를 코드로 구성한다.
+# [자료 조회 계획] LLM 자유 계획 대신 확인된 대상별 지표·추가 근거 조회를 코드로 구성한다.
 # 추가 근거는 로그/배포/시계열의 제공 여부를 포함하며 미제공을 정상 판정으로 바꾸지 않는다.
 async def plan_node(state,deps):
     tasks=[]
@@ -34,7 +34,7 @@ async def research_node(state,deps):
                 data,retries=await with_retry(deps.mcp.call_tool,tool,{'system_name':task['target']})
             return {'id':f"{task['kind']}:{task['target']}",'source':task['kind'],'target':task['target'],'data':data,'retries':retries}
         except Exception as exc:
-            # Do not put raw exception strings (possibly URLs/credentials) in reports or traces.
+            # 주소나 인증 정보가 포함될 수 있으므로 예외 원문을 보고서나 추적 기록에 넣지 않는다.
             return {'id':f"{task['kind']}:{task['target']}",'source':task['kind'],'target':task['target'],'data':{},'error':type(exc).__name__,'retries':retries}
     pending=[t for t in tasks if t['status']=='pending']
     start=time.perf_counter();results=await asyncio.gather(*(one(t) for t in pending))
@@ -70,7 +70,7 @@ async def coverage_node(state,deps):
 # [판단 개선] 임계값 비교를 모델의 문장 생성과 분리해 계산 결과로 전달한다.
 # CPU 표본이 모두 높더라도 이 계산만으로 관측 범위 밖의 지속이나 원인을 확정하지 않는다.
 async def analysis_node(state,deps):
-    # Deterministic comparisons are derived facts, never a new source of causal evidence.
+    # 규칙으로 계산한 비교 결과는 파생 정보이며, 새로운 인과관계의 근거가 되지 않는다.
     systems={}
     for target in state['targets']:
         metric=next((c['data'] for c in state['collected']

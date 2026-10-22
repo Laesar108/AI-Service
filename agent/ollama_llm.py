@@ -1,10 +1,10 @@
 """LLM_BACKEND=ollama — 로컬 Ollama 실모델 백엔드 (fake_llm과 동일 인터페이스).
 
-Wave 10a 구도를 실물로: fast(기본 qwen3:0.6b)는 분류·계획·단순 대화, quality(기본
+단계 10a 구도를 실물로: fast(기본 qwen3:0.6b)는 분류·계획·단순 대화, quality(기본
 qwen3:8b)는 최종 답변 작성 전담. Ollama의 구조화 출력(format=<JSON Schema>)과
 temperature=0으로 변동을 줄이지만 실모델이므로 결정론은 아니다 — 그래서 gate(W6)·
 replan(W7)·validator(W8)가 연출이 아니라 실제 방어선으로 동작한다.
-fc
+
 비용(cost_usd)은 '가상 단가 × 실측 토큰 수(prompt_eval_count+eval_count)'다 — 로컬
 추론이라 실제 과금은 0이지만, W10a의 모델 분리 효과를 같은 잣대로 비교하기 위함이다.
 
@@ -161,7 +161,7 @@ class OllamaFastLLM(OllamaLLM):
             result = {"route": route or "chat",
                       "needs_analysis": bool(raw.get("needs_analysis", False))}
         except (json.JSONDecodeError, AttributeError):
-            # 소형 모델의 형식 붕괴 대비 — 코드 레벨 fallback (W6 정신)
+            # 소형 모델의 형식 붕괴 대비 — 코드 수준의 대체 처리 (W6 정신)
             incident = bool(re.search(r"장애|진단|다운|지연|급증|incident|티켓", query))
             result = {"route": "incident" if incident else "chat",
                       "needs_analysis": False}

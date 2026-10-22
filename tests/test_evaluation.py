@@ -1,4 +1,4 @@
-"""Exercise original/current benchmark wiring without credentials or network."""
+"""인증 정보나 네트워크 없이 초기·현재 버전의 평가 연결 구성을 검사한다."""
 import asyncio
 from contextlib import nullcontext, redirect_stdout
 import io

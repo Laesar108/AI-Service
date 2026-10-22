@@ -67,7 +67,7 @@ if [ "$FORCE_REFRESH" = "1" ]; then
     done
 fi
 
-# ── 4) 없는 모델만 pull (이미 있으면 재사용하고 건너뜀) ───────────────────
+# ── 4) 없는 모델만 내려받기 (이미 있으면 재사용하고 건너뜀) ───────────────────
 for m in "$FAST_MODEL" "$QUALITY_MODEL"; do
     if ollama list | grep "^${m}" >/dev/null; then
         echo "이미 받아져 있어 재사용: $m"

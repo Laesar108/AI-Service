@@ -1,4 +1,4 @@
-"""Request-local measurements; never record credentials or authenticated clients."""
+"""요청별 계측 정보. 인증 정보나 인증된 클라이언트는 기록하지 않는다."""
 from contextvars import ContextVar
 import time
 
@@ -7,7 +7,7 @@ CALLS = ContextVar("agent_calls", default=None)
 STAGE = ContextVar("agent_stage", default="legacy")
 PRICING_DATE = "2026-10-20"
 PRICING_SOURCE = "https://developers.openai.com/api/docs/models/"
-# Standard USD per million tokens: input, cached input, output.
+# 100만 토큰당 표준 미국 달러 단가: 입력, 캐시된 입력, 출력 순서.
 RATES = {
     "gpt-4o": (2.5, 1.25, 10.0),
     "gpt-4o-mini": (0.15, 0.075, 0.6),

@@ -8,7 +8,7 @@ def event(state,kind,**kwargs):
     return state.get('events',[])+[{'type':kind,**kwargs}]
 
 # 노드의 시작점
-# [PDF 2·7] 분류/대상/대화 노드를 분리했다. 서비스명이 명확하면 분류 LLM 호출을 줄인다.
+# [요청 분류] 분류/대상/대화 노드를 분리했다. 서비스명이 명확하면 분류 LLM 호출을 줄인다.
 async def route_node(state,deps):
     targets,unknown,_=identify_targets(state['query'])
     if targets or unknown:
@@ -18,14 +18,14 @@ async def route_node(state,deps):
             result,usage=await invoke_json(deps.fast_llm,ROUTE,{'question':state['query']},'router')
             route=result.get('route') if isinstance(result,dict) else None
             if route not in ('chat','incident'):
-                route='incident'  # Ask for a target rather than silently answering an incident as chat.
+                route='incident'  # 장애 요청을 일반 대화로 처리하지 않고 조사 대상을 확인하도록 안내한다.
         else:
             result,usage=deps.fast_llm.route(state['query']);route=result['route']
     return {'route':route,'cost_usd':state.get('cost_usd',0)+usage['usd'],
             'events':event(state,'RouteDecided',route=route)}
 
 
-# [PDF 7] 대상 누락·미등록 여부를 별도 노드에서 처리하고, 가정은 답변에 명시한다.
+# [대상 확인] 대상 누락·미등록 여부를 별도 노드에서 처리하고, 가정은 답변에 명시한다.
 async def target_node(state,deps):
     targets,unknown,assumption=identify_targets(state['query'])
     final=''

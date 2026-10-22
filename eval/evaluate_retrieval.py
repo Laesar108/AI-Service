@@ -1,4 +1,4 @@
-"""Calibrate on development queries once, freeze settings, then evaluate held-out queries."""
+"""개발용 질문으로 검색 설정을 조정하고 고정한 뒤 별도로 분리한 질문으로 평가한다."""
 import asyncio
 import json
 import logging
@@ -23,7 +23,7 @@ def metrics(rows):
             "true_positive":tp,"predicted":predicted,"expected":expected,"cases":len(rows)}
 
 
-# [PDF 1·6] 개발 질문에서 검색 설정을 선택하고 분리된 평가 질문으로 검색 품질을 확인한다.
+# [검색 품질 평가] 개발 질문에서 검색 설정을 선택하고 분리된 평가 질문으로 검색 품질을 확인한다.
 # 여기의 keyword 대조군은 규칙 검색기이며 최초 전체 그래프 Before와 동일한 비교가 아니다.
 async def main():
     from dotenv import load_dotenv
@@ -52,7 +52,7 @@ async def main():
     config={"threshold":best[3],"margin":best[4],"top_k":best[5],
             "model":retriever.embedder.model,"selection_split":"development","development_metrics":best[6]}
     (ROOT/"data/retrieval_config.json").write_text(json.dumps(config,indent=2))
-    # No subsequent parameter selection is permitted based on these test results.
+    # 이 평가 결과를 보고 이후 검색 매개변수를 다시 선택하지 않는다.
     test=await retriever.rank([c["query"] for c in cases["test"]])
     output={"config":config,"splits":{}}
     for split, rankings in (("development",dev),("test",test)):

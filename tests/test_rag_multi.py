@@ -128,7 +128,7 @@ class VectorTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual([d["id"] for d in await retriever.search(["alpha"])],["a"])
             second=RunbookRetriever(corpus,root/"v.sqlite",emb)
             await second.ensure_index()
-            self.assertEqual(len(emb.batches),2)  # No re-embedding persisted documents.
+            self.assertEqual(len(emb.batches),2)  # 저장된 문서는 다시 임베딩하지 않는다.
             (corpus/"b.md").write_text("beta changed")
             await second.ensure_index()
             self.assertEqual(emb.batches[-1],["beta changed"])

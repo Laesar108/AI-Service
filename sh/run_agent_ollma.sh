@@ -12,7 +12,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-# 이 머신은 plain python3/python이 alias로 다른 경로를 가리켜 venv를 무시하는
+# 이 머신은 python3/python 명령의 별칭이 다른 경로를 가리켜 가상환경을 무시하는
 # 경우가 있어, 이 프로젝트 전용 .venv가 있으면 PATH 맨 앞에 명시적으로 꽂아둔다.
 [ -x ".venv/bin/python3" ] && export PATH="$PWD/.venv/bin:$PATH"
 

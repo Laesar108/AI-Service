@@ -1,4 +1,4 @@
-"""Grounded answer payloads; all model calls go through LCEL."""
+"""근거 기반 답변의 입력을 구성하며 모든 모델 호출은 LCEL을 거친다."""
 import json
 from .chains import model_chain, invoke_json
 from .prompts import WRITE as WRITE_SYSTEM, REVIEW as REVIEW_SYSTEM
@@ -8,9 +8,9 @@ async def call_json(llm, system, payload):
     return await invoke_json(llm, system, payload, "reviewer")
 
 
-# [근거 보존] 전문 분석의 결론만 전달하지 않고 작성자·Reviewer에게 원문과 근거 ID를 제공한다.
+# [근거 보존] 전문 분석의 결론만 전달하지 않고 작성자·검토자에게 원문과 근거 ID를 제공한다.
 def evidence_payload(state):
-    # Keep raw evidence available to the Reviewer; specialist opinions cannot replace it.
+    # 검토자에게 원본 근거를 제공하며 전문가 의견이 이를 대신하지 않도록 한다.
     return [{"id": c.get("id", f"{c['source']}:{c['target']}"),
              "source": c["source"], "target": c["target"],
              "data": c["data"], **({"error":c["error"]} if c.get("error") else {})}

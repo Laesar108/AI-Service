@@ -1,4 +1,4 @@
-"""LCEL: prompt | model adapter | parser, retaining usage alongside the output."""
+"""LCEL: 프롬프트 → 모델 어댑터 → 파서로 연결하고 결과와 사용량을 함께 유지한다."""
 import asyncio
 import inspect
 import json
@@ -10,7 +10,7 @@ from .telemetry import STAGE
 # [추가 LCEL] 프롬프트→모델 어댑터→파서를 공통화하되 출력과 usage를 함께 유지한다.
 # 동기 모델 호출은 별도 스레드에서 실행해 병렬 분기의 이벤트 루프를 막지 않도록 한다.
 def model_chain(llm, system, name, *, json_output=False, schema=None, max_tokens=None):
-    # Partial variables keep literal braces in JSON examples out of template parsing.
+    # 부분 변수를 사용해 JSON 예시의 중괄호가 템플릿 변수로 해석되지 않도록 한다.
     prompt = ChatPromptTemplate.from_messages([
         ("system", "{instructions}"), ("human", "{input}")
     ]).partial(instructions=system)
@@ -40,7 +40,7 @@ def model_chain(llm, system, name, *, json_output=False, schema=None, max_tokens
 
     # [검증 개선] 잘린 JSON을 정상 결과로 보정하지 않고 예외로 전달한다.
     def parse_output(response):
-        # Strict JSON: a truncated reviewer object must never silently pass.
+        # JSON을 엄격히 파싱해 검토 결과가 잘린 경우 정상 응답으로 통과시키지 않는다.
         value = json.loads(response["text"]) if json_output else response["text"]
         return {"value": value, "usage": response["usage"], "prompt": response["prompt"]}
 

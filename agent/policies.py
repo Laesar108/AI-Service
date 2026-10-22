@@ -1,4 +1,4 @@
-"""Deterministic policies: targets, evidence coverage, numeric and action checks."""
+"""규칙 기반 정책: 대상, 근거 확보 여부, 수치와 조치 조건을 검사한다."""
 import json
 import re
 from pathlib import Path
@@ -10,11 +10,11 @@ def known_systems():
     return set(json.loads(REGISTRY.read_text()))
 
 
-# [PDF 7] 등록 목록과 이름 경계를 확인해 대상 누락·부분 문자열 오인식을 줄인다.
+# [대상 식별] 등록 목록과 이름 경계를 확인해 대상 누락·부분 문자열 오인식을 줄인다.
 # 로그인→auth-service 추정은 남겨 두되, 추정 사실을 별도로 전달하는 부분 개선이다.
 def identify_targets(query, known=None):
     known = known if known is not None else known_systems()
-    # Bound matches avoid accepting auth-service inside fake-auth-service.
+    # 이름 경계를 확인해 fake-auth-service의 일부를 auth-service로 인식하지 않도록 한다.
     names = re.findall(r'(?<![A-Za-z0-9_-])[A-Za-z][A-Za-z0-9_-]*-service(?![A-Za-z0-9_-])|(?<![A-Za-z0-9_-])web-\d+(?![A-Za-z0-9_-])', query)
     explicit = list(dict.fromkeys(names))
     for name in sorted(known):
@@ -49,7 +49,7 @@ def topics_for(metric):
     return list(dict.fromkeys(topics))
 
 
-# [PDF 8] 로그/시계열/배포 자료가 없으면 미확인으로 기록한다. 빈 자료를 정상 증거로 삼지 않는다.
+# [근거 누락 확인] 로그/시계열/배포 자료가 없으면 미확인으로 기록한다. 빈 자료를 정상 증거로 삼지 않는다.
 def evidence_gaps(collected, targets):
     gaps = []
     for target in targets:
@@ -80,7 +80,7 @@ def deterministic_errors(draft, collected):
     errors=[]
     references={c.get('id',f"{c['source']}:{c['target']}") for c in collected}
     for group in re.findall(r'\[(?:ID:\s*)?((?:monitoring|evidence|runbook):[^\]]+)\]',draft):
-        # A bracket may cite multiple sources; validate every ID separately.
+        # 한 괄호에서 여러 근거를 인용할 수 있으므로 각 근거 ID를 따로 검사한다.
         # [버그 수정] 한 괄호에 여러 ID를 인용한 정상 응답의 불필요한 재작성을 방지한다.
         for part in group.split(','):
             reference = re.sub(r'^ID:\s*', '', part.strip())
@@ -98,7 +98,7 @@ def deterministic_errors(draft, collected):
     for value in re.findall(r'(\d+(?:\.\d+)?)\s*%',draft):
         if float(value) not in allowed:
             errors.append(f'근거에 없는 백분율 {value}%')
-    # Semantic nuances are handled separately; this catches explicit low-memory restart claims.
+    # 의미상의 세부 차이는 별도로 검토하고, 여기서는 낮은 메모리 사용률에서 명시적으로 재시작을 권고하는 문장을 검사한다.
     low=[c['data']['memory_percent'] for c in collected if c['source']=='monitoring'
          and c.get('target')=='cache-service' and 'memory_percent' in c['data']]
     if low and max(low)<90 and re.search(r'즉시\s*재시작.{0,12}(필요|해야|권장)',draft):

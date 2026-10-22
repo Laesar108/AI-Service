@@ -1,4 +1,4 @@
-"""Wave 9 — Transient 에러만 exponential backoff로 재시도.
+"""단계 9 — 일시적 오류만 대기 시간을 지수적으로 늘리며 재시도.
 
 asyncio.TimeoutError(일시적)만 재시도하고, 그 외(ValueError 등 영구적)는 즉시 전파한다.
 """

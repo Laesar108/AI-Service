@@ -1,8 +1,8 @@
-"""Wave 4/10a — 결정론적 Fake LLM 2종 (fast/quality) + 실측 비용 계산.
+"""단계 4/10a — 결정론적 모의 LLM 2종 (fast/quality) + 실측 비용 계산.
 
 실제 LLM 호출 없이도 파이프라인 전체가 결정론적으로 재현되도록, 프롬프트 내용에 따라
 정해진 응답을 돌려준다. 각 호출은 LangSmith에 run_type="llm"으로 기록되고, 문자열
-길이 기반 토큰 추정치로 비용을 계산해 상태에 누적한다 (Wave 10a의 모델 분리 근거).
+길이 기반 토큰 추정치로 비용을 계산해 상태에 누적한다 (단계 10a의 모델 분리 근거).
 """
 import re
 
@@ -25,34 +25,34 @@ class FastLLM(FakeLLM):
 
     @traceable(run_type="llm", name="fast_llm.route")
     def route(self, query: str) -> tuple[dict, dict]:
-        """Wave 5 — 쿼리 라우팅. 장애 관련이면 incident 파이프라인, 아니면 chat 직행."""
+        """단계 5 — 쿼리 라우팅. 장애 관련이면 incident 파이프라인, 아니면 chat 직행."""
         incident = bool(re.search(r"장애|진단|다운|지연|급증|incident|티켓", query))
         result = {"route": "incident" if incident else "chat", "needs_analysis": False}
         return result, self._usage(query, str(result))
 
     @traceable(run_type="llm", name="fast_llm.plan")
     def plan(self, query: str, procedure_prompt: str) -> tuple[dict, dict]:
-        """Wave 4 — Plan/Task 분해. MCP Prompt가 준 표준 절차를 따라 계획을 세운다.
+        """단계 4 — 계획/작업 분해. MCP Prompt가 준 표준 절차를 따라 계획을 세운다.
 
-        Wave 6 재현: needs_analysis=False라고 스스로 판단해 놓고도 analysis task를
+        단계 6 재현: needs_analysis=False라고 스스로 판단해 놓고도 분석 작업을
         끼워 넣는 '모델의 자기모순'을 결정론적으로 재현한다 → gate 노드가 걸러낸다.
         """
         systems = re.findall(r"[a-z][a-z0-9-]+-(?:service|\d+)", query) or ["auth-service"]
         if "web-01" not in systems:
-            systems.append("web-01")   # 연관 시스템 비교 조회 → Wave 10b 병렬 실행 대상
+            systems.append("web-01")   # 연관 시스템 비교 조회 → 단계 10b 병렬 실행 대상
         tasks = [
             {"id": f"task-{i}", "agent": "research", "kind": "monitoring",
              "target": s, "status": "pending"}
             for i, s in enumerate(dict.fromkeys(systems))
         ]
         tasks.append({"id": "task-analysis", "agent": "analysis",
-                      "kind": "pattern-analysis", "status": "pending"})   # 자기모순 task
+                      "kind": "pattern-analysis", "status": "pending"})   # 자기모순 작업
         result = {"needs_analysis": False, "tasks": tasks}
         return result, self._usage(query + procedure_prompt, str(result))
 
     @traceable(run_type="llm", name="fast_llm.analyze")
     def analyze(self, collected: list[dict]) -> tuple[str, dict]:
-        """Wave 6 보완 — 여러 시스템의 monitoring 결과 사이에 공통 패턴이 있는지 비교."""
+        """단계 6 보완 — 여러 시스템의 모니터링 결과 사이에 공통 패턴이 있는지 비교."""
         mon = [c["data"] for c in collected if c["source"] == "monitoring"]
         degraded = [d["system_name"] for d in mon if d.get("status") != "healthy"]
         if len(degraded) >= 2:
@@ -66,7 +66,7 @@ class FastLLM(FakeLLM):
 
     @traceable(run_type="llm", name="fast_llm.chat")
     async def chat(self, query: str, history: list[dict], on_token=None) -> tuple[str, dict]:
-        """Wave 5의 direct 경로 + Wave 12 증명용 — 히스토리에서 이름을 기억해낸다.
+        """단계 5의 direct 경로 + 단계 12 증명용 — 히스토리에서 이름을 기억해낸다.
 
         fake 백엔드는 실제 네트워크 호출이 없어 토큰 단위로 쪼갤 대상이 없다 —
         ollama_llm.py와 인터페이스(on_token 콜백)만 맞추고 결과를 한 번에 반환한다."""
@@ -93,7 +93,7 @@ class QualityLLM(FakeLLM):
     @traceable(run_type="llm", name="quality_llm.write")
     async def write(self, query: str, collected: list[dict], attempt: int,
               feedback: str | None, on_token=None) -> tuple[str, dict]:
-        """Wave 8 재현: 1차 초안은 의도적으로 저품질(너무 짧음) → validator가 반려하면
+        """단계 8 재현: 1차 초안은 의도적으로 저품질(너무 짧음) → validator가 반려하면
         피드백을 반영한 구조화된 2차 초안을 내놓는다.
 
         fake 백엔드는 실제 네트워크 호출이 없어 토큰 단위로 쪼갤 대상이 없다 —

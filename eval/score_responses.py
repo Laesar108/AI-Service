@@ -1,4 +1,4 @@
-"""Blinded external assessment, including useful answers and irrelevant advice."""
+"""구현 버전을 가린 외부 평가로 답변의 유용성과 무관한 조치 포함 여부를 확인한다."""
 import argparse
 import json
 import logging
@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from eval.run_evaluation import safe,SECRETS
 
-# [PDF 6] 키워드 확인을 넘어 수집 근거와 답변을 LLM 평가자가 대조한다.
+# [답변 품질 평가] 키워드 확인을 넘어 수집 근거와 답변을 LLM 평가자가 대조한다.
 # 구현 버전은 평가 입력에 넣지 않으며 자동 점수의 오판은 원문 검토로 별도 확인한다.
 JUDGE="""한국어 장애 응답을 실제 조회 근거와 대조하라. 구현 버전은 알 수 없다.
 JSON {"grounding_pass":bool,"conditions_pass":bool 또는 null,"request_pass":bool,
@@ -27,7 +27,7 @@ irrelevant_advice: 검색 문서에 있더라도 실제 관측과 연관 없는 
 모의 표시 유무는 별도 지표이므로 여기서는 실패 이유로 삼지 않는다."""
 
 
-# Applied identically to all variants; retained separately from historical scoring.
+# 모든 비교 버전에 동일하게 적용하며 기존 채점 결과와 구분해 보존한다.
 JUDGE += """
 각 조치의 조건을 그 조치에만 연결하라. 커넥션 풀 90% 조건과 트래픽 분산 5분 조건을 혼동하지 마라.
 '90% 이상일 경우', '5분 내 회복되지 않으면'처럼 명시된 조건을 조건 없는 실행으로 판정하지 마라.

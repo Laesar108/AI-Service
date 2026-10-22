@@ -1,10 +1,10 @@
 """all_total 통합 실습 — 두 번째(미사용) MCP 서버.
 
-agent는 이 서버의 어떤 capability도 직접 호출하지 않는다. 여러 MCP 서버가 동시에
-연결돼 있을 때, agent가 필요한 resource를 찾기 위해 "어느 서버가 그 resource를
+에이전트는 이 서버의 어떤 기능도 직접 호출하지 않는다. 여러 MCP 서버가 동시에
+연결돼 있을 때, 에이전트가 필요한 리소스를 찾기 위해 "어느 서버가 그 리소스를
 제공하는지" 먼저 조회(list_resource_templates)하고서야 요청해야 하는 상황을
-시뮬레이션하기 위한 decoy 서버다 — mcp_server.py(runbook)와 이름이 겹치지 않는
-내부 API 문서 resource만 제공한다.
+모의 구현하기 위한 보조 서버다 — mcp_server.py(runbook)와 이름이 겹치지 않는
+내부 API 문서 리소스만 제공한다.
 """
 from pathlib import Path
 
@@ -20,7 +20,7 @@ DOC_SECTIONS = {
 
 @mcp.resource("docs://api-reference/{section}")
 def get_api_doc(section: str) -> str:
-    """내부 API 문서(section별 정적 문서)를 반환합니다. (agent는 사용하지 않음)"""
+    """내부 API 문서(구역별 정적 문서)를 반환합니다. (에이전트는 사용하지 않음)"""
     if section not in DOC_SECTIONS:
         return f"# Doc Not Found\n\nNo API reference for section: {section}"
     return DOC_SECTIONS[section]
